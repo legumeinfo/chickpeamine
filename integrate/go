@@ -1,0 +1,12 @@
+#!/bin/sh
+echo "********** chickpeamine/integrate **********"
+ant clean
+
+#and -v -Dsource=so,go
+
+#ant -v -Dsource=chado-genomics
+#ant -v -Dsource=chado-genetics
+#ant -v -Dsource=chado-featureprop
+#ant -v -Dsource=chado-homology
+#ant -v -Dsource=chado-reactome-file
+ant -v -Dsource=chado-go

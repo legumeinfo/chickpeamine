@@ -1,0 +1,123 @@
+<project type="bio">
+  <property name="target.model" value="genomic"/>
+  <property name="source.location" location="../bio/sources/"/>
+  <property name="common.os.prefix" value="common"/>
+  <property name="intermine.properties.file" value="chickpeamine.properties"/>
+  <property name="default.intermine.properties.file" location="../default.intermine.integrate.properties"/>
+
+  <sources>
+
+    <!-- chado genomics - initiates SequenceFeatures, so run first -->
+    <source name="chado-genomics" type="legfed-chado-db" dump="true">
+      <property name="source.db.name" value="chado"/>
+      <property name="organisms" value="3827_desi 3827_kabuli"/>
+      <property name="dataSetTitle" value="LIS Cicer arietinum (kabuli,desi) data"/>
+      <property name="dataSourceName" value="LIS Tripal database"/>
+      <property name="converter.class" value="org.intermine.bio.dataconversion.ChadoDBConverter"/>
+      <property name="processors" value="org.intermine.bio.dataconversion.SequenceProcessor"/>
+    </source>
+
+    <!-- chado genetics - initiates other genetic items, so run second -->
+    <source name="chado-genetics" type="legfed-chado-db" dump="true">
+      <property name="source.db.name" value="chado"/>
+      <property name="organisms" value="3827_desi 3827_kabuli"/>
+      <property name="dataSetTitle" value="LIS Cicer arietinum (kabuli,desi) data"/>
+      <property name="dataSourceName" value="LIS Tripal database"/>
+      <property name="converter.class" value="org.intermine.bio.dataconversion.ChadoDBConverter"/>
+      <property name="processors" value="org.intermine.bio.dataconversion.GeneticProcessor"/>
+    </source>
+
+    <!-- chado GO annotation -->
+    <source name="chado-go" type="legfed-chado-db" dump="true">
+      <property name="source.db.name" value="chado"/>
+      <property name="organisms" value="3827_desi 3827_kabuli"/>
+      <property name="dataSetTitle" value="LIS Cicer arietinum (kabuli,desi) data"/>
+      <property name="dataSourceName" value="LIS Tripal database"/>
+      <property name="converter.class" value="org.intermine.bio.dataconversion.ChadoDBConverter"/>
+      <property name="processors" value="org.intermine.bio.dataconversion.GOAnnotationProcessor"/>
+    </source>
+
+    <!-- chado featureprop attributes -->
+    <source name="chado-featureprop" type="legfed-chado-db" dump="true">
+      <property name="source.db.name" value="chado"/>
+      <property name="organisms" value="3827_desi 3827_kabuli"/>
+      <property name="dataSetTitle" value="LIS Cicer arietinum (kabuli,desi) data"/>
+      <property name="dataSourceName" value="LIS Tripal database"/>
+      <property name="converter.class" value="org.intermine.bio.dataconversion.ChadoDBConverter"/>
+      <property name="processors" value="org.intermine.bio.dataconversion.FeaturePropProcessor"/>
+    </source>
+
+    <!-- chado homology attributes -->
+    <source name="chado-homology" type="legfed-chado-db" dump="true">
+      <property name="source.db.name" value="chado"/>
+      <property name="organisms" value="3827_desi 3827_kabuli"/>
+      <property name="homologue.organisms" value="3702 3847 3880 3885 130453 130454 3827_desi 3827_kabuli"/>
+      <property name="phytozome.version" value="phytozome_10_2"/>
+      <property name="dataSetTitle" value="LIS Cicer arietinum (kabuli,desi) data"/>
+      <property name="dataSourceName" value="LIS Tripal database"/>
+      <property name="converter.class" value="org.intermine.bio.dataconversion.ChadoDBConverter"/>
+      <property name="processors" value="org.intermine.bio.dataconversion.HomologyProcessor"/>
+    </source>
+
+    <!-- chado + reactome file -->
+    <source name="chado-reactome-file" type="legfed-chado-db" dump="true">
+      <property name="source.db.name" value="chado"/>
+      <property name="reactome.filename" location="/home/intermine/data/plant-reactome/reactome.txt"/>
+      <property name="organisms" value="3827_desi 3827_kabuli"/>
+      <property name="dataSetTitle" value="LIS Cicer arietinum (kabuli,desi) data"/>
+      <property name="dataSourceName" value="LIS Tripal database"/>
+      <property name="converter.class" value="org.intermine.bio.dataconversion.ChadoDBConverter"/>
+      <property name="processors" value="org.intermine.bio.dataconversion.ReactomeProcessor"/>
+    </source>
+
+    <!-- gene ontology -->
+    <source name="go" type="go">
+        <property name="src.data.file" location="/home/intermine/data/go-annotation/go.obo"/>
+    </source>
+
+    <!-- sequence ontology -->
+    <source name="so" type="so">
+      <property name="src.data.file" location="../../bio/sources/so/so.obo"/>
+    </source>
+      
+    <!-- update organism records -->
+    <source name="entrez-organism" type="entrez-organism">
+      <property name="src.data.file" location="build/organisms.xml"/>
+    </source>
+
+  </sources>
+
+  <post-processing>
+
+    <!-- source-specific post-processing -->
+    <post-process name="do-sources" dump="true"/>
+
+    <!-- legfed -->
+    <post-process name="populate-gene-spanning-qtls" dump="true"/>
+    <post-process name="create-protein-gene-references" dump="true"/>
+    <post-process name="create-protein-domain-references" dump="true"/>
+    <post-process name="populate-interpro-data" dump="true"/>
+    
+    <!-- add features -->
+    <post-process name="create-intron-features"/>
+    <post-process name="create-intergenic-region-features"/>
+    <post-process name="create-gene-flanking-features"/> 
+   
+    <!-- create various references and collections -->
+    <post-process name="populate-located-features"/>
+    <post-process name="populate-child-features"/>
+    <post-process name="create-references" />
+    <post-process name="create-chromosome-locations-and-lengths"/>
+    <post-process name="transfer-sequences"/>
+
+    <!-- views and indexes, after all data is set -->
+    <post-process name="create-location-overlap-index"/>
+    <post-process name="create-overlap-view" />
+    <post-process name="create-attribute-indexes"/>
+    <post-process name="summarise-objectstore"/>
+    <post-process name="create-autocomplete-index"/>
+    <post-process name="create-search-index"/>
+
+  </post-processing>
+
+</project>
