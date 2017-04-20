@@ -1,5 +1,5 @@
 # chickpeamine
-A mine containing *Cicer Arietinum* chickpea (desi) and chickpea (kabuli) genomes.
+A mine containing *Cicer arietinum* chickpea (desi) and chickpea (kabuli) genomes.
 
 The data model for this mine contains one important tweak: the addition of ```Organism.variety```, to support two genomes which have the
 same taxonId. This also means that a number of updates were done to the processors under the legfed/legfed-chado data source as
