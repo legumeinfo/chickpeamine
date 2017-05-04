@@ -16,61 +16,57 @@
     
     <div id="heatmap_div">
 
-        <p>
-            <i>
-                Heatmap visualization powered by <a target="_blank" href="http://www.canvasxpress.org">canvasXpress</a>.
-                Grab the edges with your mouse to resize the map. Zoom in/out on an area with your scroll wheel.
-            </i>
-        </p>
-
         <html:link linkName="#" styleId="bro" style="cursor:pointer">
             <div style="clear:both; padding-left:10px; font-weight:bold; background-color:gray; color:white;">
                 <c:if test="${FeatureCount>MAX_DEFAULT_OPEN}">
                     Your list is big and there could be issues with the display:
-                    click to see/hide the expression map<img src="images/undisclosed.gif" id="oc">
+                    click to see/hide the expression heat map<img src="images/undisclosed.gif" id="oc">
                 </c:if>
                 <c:if test="${FeatureCount<=MAX_DEFAULT_OPEN}">
-                    Click to see/hide the expression map<img src="images/disclosed.gif" id="oc">
+                    Click to see/hide the expression heat map<img src="images/disclosed.gif" id="oc">
                 </c:if>
             </div>
         </html:link>
 
-        <div id="heatmapGraph" style="display:block">
-            <div style="width:500px; margin:5px 0px 5px 100px;">
-                
-                <c:if test="${FeatureCount>MAX_CLUSTER}">
-                    <p>
-                        Please note that clustering functions are not available for lists with more than ${MAX_CLUSTER} transcripts.
-                    </p>
+        <div id="heatmapGraph" style="display:block; margin:10px 0;">
+
+            <p>
+                <i>
+                    Heatmap visualization powered by <a target="_blank" href="http://www.canvasxpress.org">canvasXpress</a>.
+                    Grab the edges with your mouse to resize the map. Zoom in/out on an area with your scroll wheel.
+                </i>
+            </p>
+
+            <c:if test="${FeatureCount>MAX_CLUSTER}">
+                <p>
+                    Please note that clustering functions are not available for lists with more than ${MAX_CLUSTER} transcripts.
+                </p>
+            </c:if>
+            <c:if test="${ConditionCount>MAX_CLUSTER}">
+                <p>
+                    Please note that clustering functions are not available for more than ${MAX_CLUSTER} tissue samples.
+                </p>
+            </c:if>
+
+            <div style="width:350px; margin:10px auto; text-align:center; padding:3px; border:1px solid gray; background-color:#eee;">
+                <c:if test="${FeatureCount>4 && FeatureCount<=MAX_CLUSTER}">
+                    Expression K-means:
+                    <select id="smps-km">
+                        <option value="2" selected>2</option>
+                        <c:forEach begin="3" end="${FeatureCount}" var="val">
+                            <option value="${val}">${val}</option>
+                        </c:forEach>
+                    </select>
                 </c:if>
-                
-                <c:if test="${ConditionCount>MAX_CLUSTER}">
-                    <p>
-                        Please note that clustering functions are not available for more than ${MAX_CLUSTER} tissue samples.
-                    </p>
+                <c:if test="${ConditionCount>4 && ConditionCount<=MAX_CLUSTER}">
+                    Tissue K-means:
+                    <select id="vars-km">
+                        <option value="2" selected>2</option>
+                        <c:forEach begin="3" end="${ConditionCount}" var="val">
+                            <option value="${val}">${val}</option>
+                        </c:forEach>
+                    </select>
                 </c:if>
-            
-                <div style="width:350px; margin:auto; text-align:center; padding:3px; border:1px solid gray; background-color:#eee;">
-                    <c:if test="${FeatureCount>4 && FeatureCount<=MAX_CLUSTER}">
-                        Expression K-means:
-                        <select id="smps-km">
-                            <option value="2" selected>2</option>
-                            <c:forEach begin="3" end="${FeatureCount}" var="val">
-                                <option value="${val}">${val}</option>
-                            </c:forEach>
-                        </select>
-                    </c:if>
-                    <c:if test="${ConditionCount>4 && ConditionCount<=MAX_CLUSTER}">
-                        Tissue K-means:
-                        <select id="vars-km">
-                            <option value="2" selected>2</option>
-                            <c:forEach begin="3" end="${ConditionCount}" var="val">
-                                <option value="${val}">${val}</option>
-                            </c:forEach>
-                        </select>
-                    </c:if>
-                </div>
-                
             </div>
             
             <canvas id="canvasx" width="${WEB_PROPERTIES['heatmap.width']}" height="${WEB_PROPERTIES['heatmap.height']}"></canvas>
@@ -81,7 +77,12 @@
     <div id="description_div" style="clear:both; padding-left:10px; font-weight:bold; background-color:gray; color:white;">
         More information <img src="images/undisclosed.gif" id="co">
     </div>
-    <div id="description" style="padding:5px">${WEB_PROPERTIES['heatmap.description']}</div>
+    <div id="description" style="padding:5px">
+        <c:if test="${WEB_PROPERTIES['heatmap.pmid']!=''}">
+            <p><a target="_blank" href="https://ncbi.nlm.nih.gov/pubmed/${WEB_PROPERTIES['heatmap.pmid']}"><b>View article on PubMed</b></a></p>
+        </c:if>
+        ${WEB_PROPERTIES['heatmap.description']}
+    </div>
 
 </div>
 
@@ -116,7 +117,7 @@
  if (${fn:length(expressionValueJSON)}<10) {
      
      jQuery('#heatmap_div').remove();
-     jQuery('#expression_div').html('<i>Expression values are not available</i>');
+     jQuery('#expression_div').html('<i>Expression values are not available</i><pre>${expressionValueJSON}</pre>');
 
  } else {
 
@@ -144,8 +145,10 @@
                                {
                                    "graphType": "Heatmap",
                                    "title": "${WEB_PROPERTIES['heatmap.title']} : "+feature_count+" transcripts",
+                                   "titleScaleFontFactor": ${WEB_PROPERTIES['heatmap.titleScaleFontFactor']},
                                    "xAxisTitle": "",
                                    "fontName": "Arial",
+                                   "canvasBox": true,
                                    "smpLabelScaleFontFactor": ${WEB_PROPERTIES['heatmap.smpLabelScaleFontFactor']},
                                    "smpLabelFontStyle": "${WEB_PROPERTIES['heatmap.smpLabelFontStyle']}",
                                    "smpLabelFontColor": "${WEB_PROPERTIES['heatmap.smpLabelFontColor']}",
@@ -162,20 +165,27 @@
                                    "heatmapIndicatorHistogram": ${WEB_PROPERTIES['heatmap.heatmapIndicatorHistogram']},
                                    "heatmapIndicatorHeight": ${WEB_PROPERTIES['heatmap.heatmapIndicatorHeight']},
                                    "heatmapIndicatorWidth": ${WEB_PROPERTIES['heatmap.heatmapIndicatorWidth']},
-                                   "showSmpDendrogram": false,
-                                   "showVarDendrogram": false,
+                                   "samplesKmeaned": true,
+                                   "variablesKmeaned": true,
                                    "kmeansSmpClusters": 2,
                                    "kmeansVarClusters": 2,
+                                   "linkage": "complete",
                                    "samplesClustered": false,
-                                   "samplesKmeaned": false,
                                    "variablesClustered": false,
-                                   "variablesKmeaned": false
+                                   "showSmpDendrogram": false,
+                                   "showVarDendrogram": false
                                },
                                {
                                    click: function(o) {
                                        var featureId = o.y.smps;
                                        var condition = o.y.vars;
-                                       var query = '<query name="" model="genomic" view="ExpressionValue.mRNA.primaryIdentifier ExpressionValue.expressionSample.primaryIdentifier ExpressionValue.value" sortOrder="ExpressionValue.expressionSample.num asc" constraintLogic="A and B"><constraint path="ExpressionValue.mRNA" code="B" op="LOOKUP" value="'+featureId+'" extraValue=""/><constraint path="ExpressionValue.expressionSample" code="A" op="LOOKUP" value="'+condition+'"/></query>';
+                                       if (featureId.length==1 && condition.length==1) {
+                                           var query = '<query name="" model="genomic" view="ExpressionValue.transcript.primaryIdentifier ExpressionValue.sample.num ExpressionValue.sample.primaryIdentifier ExpressionValue.sample.description ExpressionValue.value" sortOrder="ExpressionValue.sample.num asc"><constraint path="ExpressionValue.sample.primaryIdentifier" op="=" value="'+condition+'"/><constraint path="ExpressionValue.transcript.primaryIdentifier" op="=" value="'+featureId+'"/></query>';
+                                       } else if (featureId.length==1) {
+                                           var query = '<query name="" model="genomic" view="ExpressionValue.transcript.primaryIdentifier ExpressionValue.sample.num ExpressionValue.sample.primaryIdentifier ExpressionValue.sample.description ExpressionValue.value" sortOrder="ExpressionValue.sample.num asc"><constraint path="ExpressionValue.transcript.primaryIdentifier" op="=" value="'+featureId+'"/></query>';
+                                       } else {
+                                           var query = '<query name="" model="genomic" view="ExpressionValue.transcript.primaryIdentifier ExpressionValue.sample.num ExpressionValue.sample.primaryIdentifier ExpressionValue.sample.description ExpressionValue.value" sortOrder="ExpressionValue.sample.num asc"><constraint path="ExpressionValue.sample.primaryIdentifier" op="=" value="'+condition+'"/><constraint path="ExpressionValue.transcript" op="LOOKUP" value="'+featureId+'"/></query>';
+                                       }
                                        var encodedQuery = encodeURIComponent(query);
                                        encodedQuery = encodedQuery.replace("%20", "+");
                                        window.open("/${WEB_PROPERTIES['webapp.path']}/loadQuery.do?skipBuilder=true&query="+encodedQuery+"%0A++++++++++++&trail=|query&method=xml");

@@ -65,13 +65,16 @@
     </fields>
   </class>
 
-  <!-- have to have a Gene entry so the gene enrichment widget works; yanked supercontig so the list analysis page shows chromosomal genes at least -->
+   <!-- have to have a Gene entry so the gene enrichment widget works; yanked supercontig so the list analysis page shows chromosomal genes at least -->
   <class className="org.intermine.model.bio.Gene">
     <fields>
       <fieldconfig fieldExpr="organism.name" label="Organism" />
       <fieldconfig fieldExpr="primaryIdentifier" label="DB identifier" />
       <fieldconfig fieldExpr="length" displayer="/model/sequenceShortDisplayerWithField.jsp" showInInlineCollection="true" showInSummary="true" />
     </fields>
+    <bagdisplayers>
+      <displayer src="heatMap.tile" showOnLeft="true" />
+    </bagdisplayers>
   </class>
 
   <class className="org.intermine.model.bio.GeneFlankingRegion">
@@ -221,6 +224,9 @@
       <fieldconfig fieldExpr="length" displayer="/model/sequenceShortDisplayerWithField.jsp" />
       <fieldconfig fieldExpr="chromosome.primaryIdentifier" showInInlineCollection="true" showInSummary="false" label="Chromosome" />
     </fields>
+    <bagdisplayers>
+      <displayer src="heatMap.tile" showOnLeft="true"/>
+    </bagdisplayers>
   </class>
 
   <class className="org.intermine.model.bio.LinkageGroup">
@@ -341,18 +347,19 @@
       </titles>
     </headerconfig>
     <fields>
-      <fieldconfig fieldExpr="primaryIdentifier" label="Name"/>
+      <fieldconfig fieldExpr="primaryIdentifier" label="DB identifier"/>
       <fieldconfig fieldExpr="description" label="Description"/>
     </fields>
   </class>
 
   <class className="org.intermine.model.bio.ExpressionValue">
     <fields>
-      <fieldconfig fieldExpr="expressionSample.source.primaryIdentifier" label="Source"/>
-      <fieldconfig fieldExpr="expressionSample.primaryIdentifier" label="Sample"/>
-      <fieldconfig fieldExpr="expressionSample.description" label="Description"/>
+      <fieldconfig fieldExpr="sample.source.primaryIdentifier" label="Source"/>
+      <fieldconfig fieldExpr="sample.num" label="Sample Num"/>
+      <fieldconfig fieldExpr="sample.primaryIdentifier" label="Sample"/>
+      <fieldconfig fieldExpr="sample.description" label="Description"/>
       <fieldconfig fieldExpr="value" label="Value"/>
-      <fieldconfig fieldExpr="unit" label="Unit"/>
+      <fieldconfig fieldExpr="sample.source.unit" label="Unit"/>
     </fields>
   </class>
 
