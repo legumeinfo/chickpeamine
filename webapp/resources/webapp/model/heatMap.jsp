@@ -39,7 +39,7 @@
 
             <c:if test="${FeatureCount>MAX_CLUSTER}">
                 <p>
-                    Please note that clustering functions are not available for lists with more than ${MAX_CLUSTER} transcripts.
+                    Please note that clustering functions are not available for lists with more than ${MAX_CLUSTER} genes.
                 </p>
             </c:if>
             <c:if test="${ConditionCount>MAX_CLUSTER}">
@@ -180,11 +180,11 @@
                                        var featureId = o.y.smps;
                                        var condition = o.y.vars;
                                        if (featureId.length==1 && condition.length==1) {
-                                           var query = '<query name="" model="genomic" view="ExpressionValue.transcript.primaryIdentifier ExpressionValue.sample.num ExpressionValue.sample.primaryIdentifier ExpressionValue.sample.description ExpressionValue.value" sortOrder="ExpressionValue.sample.num asc"><constraint path="ExpressionValue.sample.primaryIdentifier" op="=" value="'+condition+'"/><constraint path="ExpressionValue.transcript.primaryIdentifier" op="=" value="'+featureId+'"/></query>';
+                                           var query = '<query name="" model="genomic" view="ExpressionValue.gene.primaryIdentifier ExpressionValue.sample.num ExpressionValue.sample.primaryIdentifier ExpressionValue.sample.description ExpressionValue.value" sortOrder="ExpressionValue.sample.num asc"><constraint path="ExpressionValue.sample.primaryIdentifier" op="=" value="'+condition+'"/><constraint path="ExpressionValue.gene.primaryIdentifier" op="=" value="'+featureId+'"/></query>';
                                        } else if (featureId.length==1) {
-                                           var query = '<query name="" model="genomic" view="ExpressionValue.transcript.primaryIdentifier ExpressionValue.sample.num ExpressionValue.sample.primaryIdentifier ExpressionValue.sample.description ExpressionValue.value" sortOrder="ExpressionValue.sample.num asc"><constraint path="ExpressionValue.transcript.primaryIdentifier" op="=" value="'+featureId+'"/></query>';
+                                           var query = '<query name="" model="genomic" view="ExpressionValue.gene.primaryIdentifier ExpressionValue.sample.num ExpressionValue.sample.primaryIdentifier ExpressionValue.sample.description ExpressionValue.value" sortOrder="ExpressionValue.sample.num asc"><constraint path="ExpressionValue.gene.primaryIdentifier" op="=" value="'+featureId+'"/></query>';
                                        } else {
-                                           var query = '<query name="" model="genomic" view="ExpressionValue.transcript.primaryIdentifier ExpressionValue.sample.num ExpressionValue.sample.primaryIdentifier ExpressionValue.sample.description ExpressionValue.value" sortOrder="ExpressionValue.sample.num asc"><constraint path="ExpressionValue.sample.primaryIdentifier" op="=" value="'+condition+'"/><constraint path="ExpressionValue.transcript" op="LOOKUP" value="'+featureId+'"/></query>';
+                                           var query = '<query name="" model="genomic" view="ExpressionValue.gene.primaryIdentifier ExpressionValue.sample.num ExpressionValue.sample.primaryIdentifier ExpressionValue.sample.description ExpressionValue.value" sortOrder="ExpressionValue.sample.num asc"><constraint path="ExpressionValue.sample.primaryIdentifier" op="=" value="'+condition+'"/><constraint path="ExpressionValue.gene" op="LOOKUP" value="'+featureId+'"/></query>';
                                        }
                                        var encodedQuery = encodeURIComponent(query);
                                        encodedQuery = encodedQuery.replace("%20", "+");

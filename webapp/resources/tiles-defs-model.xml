@@ -45,3 +45,4 @@
   <put name="body" value="heatMap.tile"/>
   <put name="pageName" value="heatMap"/>
 </definition>
+

@@ -224,9 +224,6 @@
       <fieldconfig fieldExpr="length" displayer="/model/sequenceShortDisplayerWithField.jsp" />
       <fieldconfig fieldExpr="chromosome.primaryIdentifier" showInInlineCollection="true" showInSummary="false" label="Chromosome" />
     </fields>
-    <bagdisplayers>
-      <displayer src="heatMap.tile" showOnLeft="true"/>
-    </bagdisplayers>
   </class>
 
   <class className="org.intermine.model.bio.LinkageGroup">
@@ -403,6 +400,12 @@
                      replacesFields="linkageGroups,geneticMarkers"
                      placement="summary"
                      types="GeneticMap"/>
+
+    <reportdisplayer javaClass="org.ncgr.intermine.bio.web.displayer.GeneHeatmapDisplayer"
+                     jspName="model/geneHeatmapDisplayer.jsp"
+                     replacesFields="expressionValues"
+                     placement="Expression"
+                     types="Gene"/>
 
   </reportdisplayers>
 
