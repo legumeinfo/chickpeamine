@@ -2,3 +2,7 @@
 build
 dist
 *.log
+sql/
+webapp/go-restart
+webapp/resources/webapp/model/
+webapp/src/
