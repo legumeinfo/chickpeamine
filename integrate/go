@@ -2,16 +2,18 @@
 echo "********** chickpeamine/integrate **********"
 ant clean
 
-#ant -v -Dsource=so,go,chado-genomics,chado-genetics,chado-featureprop,chado-homology,chado-reactome-file,chado-go
-
+#pg_restore -d chickpeamine /home/analysis/shokin/dumps/chickpeamine.so-go.dat
 #ant -v -Dsource=so,go
-#ant -v -Dsource=chado-genomics
-#ant -v -Dsource=chado-genetics
-#ant -v -Dsource=chado-featureprop
-#ant -v -Dsource=chado-homology
-#ant -v -Dsource=chado-reactome-file
-#ant -v -Dsource=chado-go
-#ant -v -Dsource=chickpea-expression
+#pg_dump -Fc chickpeamine > /home/analysis/shokin/dumps/chickpeamine.so-go.dat
 
-# entrez-organism does NOT work here:
-# run organism.sql against the db with Joe Carlson's triggers in place to update organism table and object store.
+#pg_restore -d chickpeamine /home/analysis/shokin/dumps/chickpeamine.chado.dat
+#ant -v -Dsource=chado-genomics,chado-go,chado-featureprop,chado-genefamilies,chado-homology,chado-reactome-file
+#pg_dump -Fc chickpeamine > /home/analysis/shokin/dumps/chickpeamine.chado.dat
+
+#psql chickpeamine -f ../dbmodel/build/model/add-update-triggers.sql
+#psql chickpeamine -f ../sql/update-organisms.sql
+#psql chickpeamine -f ../sql/update-identifiers.sql
+#psql chickpeamine -f ../dbmodel/build/model/remove-update-triggers.sql
+
+# load some expression
+#ant -v -Dsource=chickpea-expression

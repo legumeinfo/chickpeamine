@@ -1,8 +1,0 @@
-#!/bin/sh
-echo "********** chickpeamine/webapp **********"
-~intermine/tomcat/bin/shutdown.sh
-ant clean
-rm ~intermine/tomcat/webapps/chickpeamine.war
-rm -rf ~intermine/tomcat/webapps/chickpeamine
-~intermine/tomcat/bin/startup.sh
-ant default release-webapp

@@ -37,9 +37,11 @@
 <!-- friendly mines -->
 <definition name="friendlyMineLinkDisplayer.tile" path="/model/friendlyMineLinkDisplayer.jsp" controllerUrl="/initFriendlyMineLinkDisplayer.do"/>
 
+<!-- LIS pages -->
+<definition name="lisLinkDisplayer.tile" path="/model/lisLinkDisplayer.jsp"/>
+
 <!-- Heat Map -->
-<definition name="heatMap.tile" path="/model/heatMap.jsp"
-            controllerUrl="/initHeatMap.do"/>
+<definition name="heatMap.tile" path="/model/heatMap.jsp" controllerUrl="/initHeatMap.do"/>
 
 <definition name="heatMap.page" extends="layout.template">
   <put name="body" value="heatMap.tile"/>

@@ -394,3 +394,7 @@ div.bagDetails-page div.widget table.table-striped tbody tr:hover td { backgroun
 .intermine .im-column-th .dropdown-menu:after {
   border-bottom-color: #5E665C;
 }
+
+#bottom-wrap {
+	font-size: 80%;
+}
