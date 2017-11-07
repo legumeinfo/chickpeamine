@@ -1,6 +1,0 @@
-# run the index creation post-processors
-ant clean
-ant -v -Daction=create-attribute-indexes
-ant -v -Daction=summarise-objectstore
-ant -v -Daction=create-autocomplete-index
-ant -v -Daction=create-search-index
