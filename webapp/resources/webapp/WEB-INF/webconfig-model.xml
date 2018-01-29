@@ -21,6 +21,7 @@
     <fields>
       <fieldconfig fieldExpr="primaryIdentifier" label="DB identifier"/>
       <fieldconfig fieldExpr="organism.name" label="Organism"/>
+      <fieldconfig fieldExpr="organism.variety" label="Variety"/>
       <fieldconfig fieldExpr="length" displayer="/model/sequenceShortDisplayerWithField.jsp" />
     </fields>
   </class>
@@ -29,6 +30,7 @@
     <fields>
       <fieldconfig fieldExpr="primaryIdentifier" label="DB identifier"/>
       <fieldconfig fieldExpr="organism.name" label="Organism"/>
+      <fieldconfig fieldExpr="organism.variety" label="Variety"/>
       <fieldconfig fieldExpr="length" displayer="/model/sequenceShortDisplayerWithField.jsp" />
     </fields>
   </class>
@@ -65,12 +67,15 @@
     </fields>
   </class>
 
-   <!-- have to have a Gene entry so the gene enrichment widget works; yanked supercontig so the list analysis page shows chromosomal genes at least -->
+  <!-- have to have a Gene entry for the list analysis heat map -->
   <class className="org.intermine.model.bio.Gene">
     <fields>
       <fieldconfig fieldExpr="organism.name" label="Organism" />
+      <fieldconfig fieldExpr="organism.variety" label="Variety" />
       <fieldconfig fieldExpr="primaryIdentifier" label="DB identifier" />
+      <fieldconfig fieldExpr="secondaryIdentifier" label="Alternate identifier"/>
       <fieldconfig fieldExpr="length" displayer="/model/sequenceShortDisplayerWithField.jsp" showInInlineCollection="true" showInSummary="true" />
+      <fieldconfig fieldExpr="description"/>
     </fields>
     <bagdisplayers>
       <displayer src="heatMap.tile" showOnLeft="true" />
@@ -91,13 +96,16 @@
   <class className="org.intermine.model.bio.Homologue">
     <fields>
       <fieldconfig fieldExpr="homologue.organism.name" label="Organism"/>
+      <fieldconfig fieldExpr="homologue.organism.variety" label="Variety"/>
       <fieldconfig fieldExpr="homologue.primaryIdentifier" label="DB identifier"/>
+      <fieldconfig fieldExpr="homologue.secondaryIdentifier" label="Alternate identifier"/>
     </fields>
   </class>
 
   <class className="org.intermine.model.bio.SequenceFeature">
     <fields>
       <fieldconfig fieldExpr="organism.name" label="Organism"/>
+      <fieldconfig fieldExpr="organism.variety" label="Variety"/>
       <fieldconfig fieldExpr="primaryIdentifier" label="DB identifier"/>
       <fieldconfig fieldExpr="length" displayer="/model/sequenceShortDisplayerWithField.jsp" showInInlineCollection="true" showInSummary="true" />
       <fieldconfig fieldExpr="chromosome.primaryIdentifier" showInInlineCollection="true" showInSummary="false" label="Chromosome" />
@@ -131,7 +139,7 @@
 
   <class className="org.intermine.model.bio.OntologyAnnotation">
     <fields>
-      <fieldconfig fieldExpr="subject.primaryIdentifier" label="Gene"/>
+      <fieldconfig fieldExpr="subject.primaryIdentifier" label="Subject"/>
       <fieldconfig fieldExpr="ontologyTerm.identifier" label="Identifier"/>
       <fieldconfig fieldExpr="ontologyTerm.name" label="Name"/>
       <fieldconfig fieldExpr="ontologyTerm.description" label="Description"/>
@@ -171,11 +179,12 @@
   <class className="org.intermine.model.bio.Organism">
     <headerconfig>
       <titles>
-        <title mainTitles="name"/>
+        <title mainTitles="name|variety"/>
       </titles>
     </headerconfig>
     <fields>
       <fieldconfig fieldExpr="name"/>
+      <fieldconfig fieldExpr="variety"/>
       <fieldconfig fieldExpr="taxonId" />
     </fields>
   </class>
@@ -285,11 +294,10 @@
     <fields>
       <fieldconfig fieldExpr="primaryIdentifier" label="DB identifier"/>
       <fieldconfig fieldExpr="type" label="Type"/>
-      <fieldconfig fieldExpr="length" displayer="/model/sequenceShortDisplayerWithField.jsp" />
-      <!-- <fieldconfig fieldExpr="chromosomeLocation" displayer="/model/chromosomeLocDisplayer.jsp" showInResults="false" /> -->
-      <fieldconfig fieldExpr="chromosome.primaryIdentifier" showInInlineCollection="true" showInSummary="false" label="Chromosome" />
+      <fieldconfig fieldExpr="chromosome.primaryIdentifier" showInInlineCollection="true" showInSummary="false" label="Chrom." />
       <fieldconfig fieldExpr="chromosomeLocation.start" showInInlineCollection="true" showInSummary="false" label="Start" />
       <fieldconfig fieldExpr="chromosomeLocation.end" showInInlineCollection="true" showInSummary="false" label="End" />
+      <fieldconfig fieldExpr="length" displayer="/model/sequenceShortDisplayerWithField.jsp" />
     </fields>
   </class>
 
@@ -301,6 +309,8 @@
     </headerconfig>
     <fields>
       <fieldconfig fieldExpr="primaryIdentifier" label="DB identifier"/>
+      <fieldconfig fieldExpr="experimentTraitName"/>
+      <fieldconfig fieldExpr="experimentTraitDescription"/>
     </fields>
   </class>
 
@@ -344,22 +354,20 @@
       </titles>
     </headerconfig>
     <fields>
-      <fieldconfig fieldExpr="primaryIdentifier" label="DB identifier"/>
+      <fieldconfig fieldExpr="primaryIdentifier" label="Name"/>
       <fieldconfig fieldExpr="description" label="Description"/>
     </fields>
   </class>
 
   <class className="org.intermine.model.bio.ExpressionValue">
     <fields>
-      <fieldconfig fieldExpr="sample.source.primaryIdentifier" label="Source"/>
-      <fieldconfig fieldExpr="sample.num" label="Sample Num"/>
-      <fieldconfig fieldExpr="sample.primaryIdentifier" label="Sample"/>
-      <fieldconfig fieldExpr="sample.description" label="Description"/>
+      <fieldconfig fieldExpr="expressionSample.source.primaryIdentifier" label="Source"/>
+      <fieldconfig fieldExpr="expressionSample.primaryIdentifier" label="Sample"/>
+      <fieldconfig fieldExpr="expressionSample.description" label="Description"/>
       <fieldconfig fieldExpr="value" label="Value"/>
-      <fieldconfig fieldExpr="sample.source.unit" label="Unit"/>
+      <fieldconfig fieldExpr="unit" label="Unit"/>
     </fields>
   </class>
-
 
 
   <!-- exporters -->
@@ -370,13 +378,6 @@
   <!-- report displayers -->
   <reportdisplayers>
 
-    <!-- this appears to be broken, but using it to avoid duplicating Ontology Annotations display for now -->
-    <reportdisplayer javaClass="org.intermine.bio.web.displayer.GeneOntologyDisplayer"
-                     jspName="model/geneOntologyDisplayer.jsp"
-                     replacesFields="ontologyAnnotations"
-                     placement="other"
-                     types="Gene"/>
-    
     <reportdisplayer javaClass="org.intermine.bio.web.displayer.GeneStructureDisplayer"
                      jspName="model/geneStructureDisplayer.jsp"
                      replacesFields="transcripts,exons,CDSs,introns,UTRs,fivePrimeUTR,threePrimeUTR"
@@ -387,6 +388,12 @@
                      jspName="model/sequenceFeatureDisplayer.jsp"
                      replacesFields="chromosome,chromosomeLocation,sequence,length,sequenceOntologyTerm,locations,cytoLocation,supercontig,supercontigLocation"
                      placement="summary"
+                     types="SequenceFeature"/>
+
+    <reportdisplayer javaClass="org.intermine.bio.web.displayer.JBrowseDisplayer"
+                     jspName="model/jbrowseDisplayer.jsp"
+                     replacesFields=""
+                     placement="Genomics"
                      types="SequenceFeature"/>
 
     <reportdisplayer javaClass="org.ncgr.intermine.bio.web.displayer.LinkageGroupDisplayer"
@@ -439,18 +446,32 @@
                                startClass="Gene"
                                typeClass="Gene"
                                startClassDisplay="primaryIdentifier"
-                               enrich="goAnnotation.ontologyTerm.parents.name"
-                               enrichIdentifier="goAnnotation.ontologyTerm.parents.identifier"
-                               constraints="goAnnotation.ontologyTerm.parents.namespace=[Ontology],organism.name=[list],
-                                            primaryIdentifier != null, goAnnotation.qualifier = null,
-                                            goAnnotation.ontologyTerm.parents.identifier != go:0008150,
-                                            goAnnotation.ontologyTerm.parents.identifier != go:0003674,
-                                            goAnnotation.ontologyTerm.parents.identifier != go:0005575"
+                               enrich="ontologyAnnotations.ontologyTerm.name"
+                               enrichIdentifier="ontologyAnnotations.ontologyTerm.identifier"
+                               constraints="ontologyAnnotations.ontologyTerm.namespace=[Ontology],organism.name=[list],
+                                            primaryIdentifier!=null,
+                                            ontologyAnnotations.ontologyTerm.identifier!=GO:0008150,
+                                            ontologyAnnotations.ontologyTerm.identifier!=GO:0003674,
+                                            ontologyAnnotations.ontologyTerm.identifier!=GO:0005575"
                                views="secondaryIdentifier,symbol,primaryIdentifier,organism.name,
-                                      goAnnotation.ontologyTerm.identifier, goAnnotation.ontologyTerm.name,
-                                      goAnnotation.ontologyTerm.parents.identifier,goAnnotation.ontologyTerm.parents.name"
+                                      ontologyAnnotations.ontologyTerm.identifier,
+                                      ontologyAnnotations.ontologyTerm.name"
                                externalLink="http://amigo.geneontology.org/cgi-bin/amigo/term_details?term=" />
 
+    <enrichmentwidgetdisplayer id="to_enrichment_for_qtl"
+                               title="Plant Trait Ontology Enrichment"
+                               description="TO terms enriched for items in this list."
+                               label="TO Term"
+                               startClass="QTL"
+                               typeClass="QTL"
+                               startClassDisplay="primaryIdentifier"
+                               enrich="ontologyAnnotations.ontologyTerm.name"
+                               enrichIdentifier="ontologyAnnotations.ontologyTerm.identifier"
+                               views="secondaryIdentifier,symbol,primaryIdentifier,organism.name,
+                                      ontologyAnnotations.ontologyTerm.identifier,
+                                      ontologyAnnotations.ontologyTerm.name"
+                               externalLink="http://archive.gramene.org/db/ontology/search?id=" />
+    
     
   </widgets>
   
