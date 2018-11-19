@@ -1,100 +1,107 @@
 <project type="bio">
   <property name="target.model" value="genomic"/>
-  <property name="source.location" location="../bio/sources/"/>
   <property name="common.os.prefix" value="common"/>
   <property name="intermine.properties.file" value="chickpeamine.properties"/>
-  <property name="default.intermine.properties.file" location="../default.intermine.integrate.properties"/>
 
   <sources>
 
     <!-- chado genomics - initiates SequenceFeatures, so run first -->
-    <source name="chado-genomics" type="legfed-chado-db" dump="true">
-      <property name="source.db.name" value="chado"/>
-      <property name="organisms" value="3827_ICC4958 3827_CDCFrontier"/>
-      <property name="dataSetTitle" value="LIS Cicer arietinum (kabuli,desi) data"/>
+    <source name="lis-genomics" type="legfed-chado-db" dump="true">
+      <property name="source.db.name" value="lis-chado"/>
+      <property name="organisms" value="3827"/>
+      <property name="strains" value="ICC4958 CDCFrontier"/>
+      <property name="dataSetTitle" value="LIS chado genomic data"/>
       <property name="dataSourceName" value="LIS Tripal database"/>
       <property name="converter.class" value="org.intermine.bio.dataconversion.ChadoDBConverter"/>
       <property name="processors" value="org.intermine.bio.dataconversion.SequenceProcessor"/>
     </source>
 
+    <!-- chado proteins -->
+    <source name="lis-proteins" type="legfed-chado-db" dump="true">
+      <property name="source.db.name" value="lis-chado"/>
+      <property name="organisms" value="3827"/>
+      <property name="strains" value="ICC4958 CDCFrontier"/>
+      <property name="dataSetTitle" value="LIS chado protein data"/>
+      <property name="dataSourceName" value="LIS chado database"/>
+      <property name="converter.class" value="org.intermine.bio.dataconversion.ChadoDBConverter"/>
+      <property name="processors" value="org.intermine.bio.dataconversion.ProteinProcessor"/>
+    </source>
+
     <!-- chado genetics - initiates other genetic items, so run second -->
-    <source name="chado-genetics" type="legfed-chado-db" dump="true">
-      <property name="source.db.name" value="chado"/>
-      <property name="organisms" value="3827_ICC4958 3827_CDCFrontier"/>
-      <property name="dataSetTitle" value="LIS Cicer arietinum (kabuli,desi) data"/>
-      <property name="dataSourceName" value="LIS Tripal database"/>
+    <source name="lis-genetics" type="legfed-chado-db" dump="true">
+      <property name="source.db.name" value="lis-chado"/>
+      <property name="organisms" value="3827"/>
+      <property name="strains" value="ICC4958 CDCFrontier"/>
+      <property name="dataSetTitle" value="LIS chado genetic data"/>
+      <property name="dataSourceName" value="LIS chado database"/>
       <property name="converter.class" value="org.intermine.bio.dataconversion.ChadoDBConverter"/>
       <property name="processors" value="org.intermine.bio.dataconversion.GeneticProcessor"/>
     </source>
 
     <!-- chado featureprop attributes -->
-    <source name="chado-featureprop" type="legfed-chado-db" dump="true">
-      <property name="source.db.name" value="chado"/>
-      <property name="organisms" value="3827_ICC4958 3827_CDCFrontier"/>
-      <property name="dataSetTitle" value="LIS Cicer arietinum (kabuli,desi) data"/>
-      <property name="dataSourceName" value="LIS Tripal database"/>
+    <source name="lis-featureprop" type="legfed-chado-db" dump="true">
+      <property name="source.db.name" value="lis-chado"/>
+      <property name="organisms" value="3827"/>
+      <property name="strains" value="ICC4958 CDCFrontier"/>
+      <property name="dataSetTitle" value="LIS chado feature properties"/>
+      <property name="dataSourceName" value="LIS chado database"/>
       <property name="converter.class" value="org.intermine.bio.dataconversion.ChadoDBConverter"/>
       <property name="processors" value="org.intermine.bio.dataconversion.FeaturePropProcessor"/>
     </source>
 
     <!-- chado gene families and resulting homology - based on featureprop -->
-    <source name="chado-genefamilies" type="legfed-chado-db" dump="true">
-      <property name="source.db.name" value="chado"/>
-      <property name="organisms" value="3827_ICC4958 3827_CDCFrontier"/>
-      <property name="homologue.organisms" value="3920_IT97K-499-35 3847_Williams82 3880_A17 3885_G19833 130453_V14167 130454_K30076 3827_CDCFrontier 3827_ICC4958 157791_VC1973A 57577_MilvusB 3914_Gyeongwon 3821_ICPL87119 3871_Tanjil 34305_MG20"/>
-      <property name="dataSetTitle" value="LIS chado data"/>
-      <property name="dataSourceName" value="LIS Tripal database"/>
+    <source name="lis-genefamilies" type="legfed-chado-db" dump="true">
+      <property name="source.db.name" value="lis-chado"/>
+      <property name="organisms" value="3827"/>
+      <property name="strains" value="ICC4958 CDCFrontier"/>
+      <property name="homologue.organisms" value="3920 3847 3880 3885 130453 130454 3827 157791 57577 3914 3821 3871 34305"/>
+      <property name="homologue.strains" value="IT97K-499-35 Williams82 A17 G19833 V14167 K30076 CDCFrontier ICC4958 VC1973A MilvusB Gyeongwon ICPL87119 Tanjil MG20"/>
+      <property name="dataSetTitle" value="LIS chado gene families"/>
+      <property name="dataSourceName" value="LIS chado database"/>
       <property name="converter.class" value="org.intermine.bio.dataconversion.ChadoDBConverter"/>
       <property name="processors" value="org.intermine.bio.dataconversion.GeneFamilyProcessor"/>
     </source>
 
-    <!-- chado gene families and homology - based on phylotree - to pick up Arabidopsis -->
-    <source name="chado-homology" type="legfed-chado-db" dump="true">
-      <property name="source.db.name" value="chado"/>
-      <property name="organisms" value="3827_ICC4958 3827_CDCFrontier"/>
-      <property name="homologue.organisms" value="3702_Col0"/>
-      <property name="phytozome.version" value="phytozome_10_2"/>
-      <property name="dataSetTitle" value="LIS Cicer arietinum (kabuli,desi) data"/>
-      <property name="dataSourceName" value="LIS Tripal database"/>
-      <property name="converter.class" value="org.intermine.bio.dataconversion.ChadoDBConverter"/>
-      <property name="processors" value="org.intermine.bio.dataconversion.HomologyProcessor"/>
-    </source>
-
     <!-- chado + reactome file -->
-    <source name="chado-reactome-file" type="legfed-chado-db" dump="true">
-      <property name="source.db.name" value="chado"/>
-      <property name="reactome.filename" location="/home/shokin/intermine-data/plant-reactome/reactome.txt"/>
-      <property name="organisms" value="3827_ICC4958 3827_CDCFrontier"/>
-      <property name="dataSetTitle" value="LIS Cicer arietinum (kabuli,desi) data"/>
-      <property name="dataSourceName" value="LIS Tripal database"/>
+    <source name="lis-reactome-file" type="legfed-chado-db" dump="true">
+      <property name="source.db.name" value="lis-chado"/>
+      <property name="reactome.filename" value="/home/shokin/legfed-intermine-data/plant-reactome/gene_ids_by_pathway_and_species.tab"/>
+      <property name="organisms" value="3827"/>
+      <property name="strains" value="ICC4958 CDCFrontier"/>
+      <property name="dataSetTitle" value="LIS protein data + plant reactome"/>
+      <property name="dataSourceName" value="LIS chado database"/>
       <property name="converter.class" value="org.intermine.bio.dataconversion.ChadoDBConverter"/>
       <property name="processors" value="org.intermine.bio.dataconversion.ReactomeProcessor"/>
     </source>
 
-    <!-- Chickpea Transcriptome Atlas - I -->
+    <!-- NON-CHADO -->
+
+    <!-- Chickpea expression -->
     <source name="chickpea-expression" type="legfed-expression" dump="true">
-      <property name="src.data.dir" location="/home/shokin/intermine-data/chickpea-expression"/>
+      <property name="src.data.dir" location="/home/shokin/legfed-intermine-data/chickpea-expression"/>
     </source>
 
+    <!-- ONTOLOGIES -->
+    
     <!-- gene ontology -->
     <source name="go" type="go">
-      <property name="src.data.file" location="/home/shokin/intermine-data/go-annotation/go.obo"/>
+      <property name="src.data.file" location="/home/shokin/legfed-intermine-data/gene-ontology/go-basic.obo"/>
     </source>
 
     <!-- sequence ontology -->
     <source name="so" type="so">
-      <property name="src.data.file" location="../../bio/sources/so/so.obo"/>
+      <property name="src.data.file" location="/home/shokin/SO-Ontologies/so-simple.obo"/>
     </source>
 
     <!-- trait ontology -->
-    <source name="to" type="trait-ontology">
-      <property name="src.data.file" location="/home/shokin/intermine-data/plant-trait-ontology/to.obo"/>
+    <source name="to" type="legfed-trait-ontology">
+      <property name="src.data.file" location="/home/shokin/plant-trait-ontology/to.obo"/>
       <property name="ontology.prefix" value="TO"/>
     </source>
 
     <!-- plant ontology -->
-    <source name="po" type="plant-ontology">
-      <property name="src.data.file" location="/home/shokin/intermine-data/plant-ontology/po.obo"/>
+    <source name="po" type="legfed-plant-ontology">
+      <property name="src.data.file" location="/home/shokin/legfed-intermine-data/plant-ontology/po.obo"/>
       <property name="ontology.prefix" value="PO"/>
     </source>
 
@@ -105,24 +112,28 @@
     <!-- source-specific post-processing -->
     <post-process name="do-sources" dump="true"/>
 
-    <!-- legfed -->
-    <post-process name="create-go-annotations" dump="true"/>
-    <post-process name="create-protein-gene-references" dump="true"/>
-    <post-process name="create-protein-domain-references" dump="true"/>
-    <post-process name="create-ontology-parent-annotations" dump="true"/>
-    <post-process name="populate-publications" dump="true"/>
-    <post-process name="populate-linkagegroup-lengths" dump="true"/>
-    <post-process name="populate-qtl-linkagegroups" dump="true"/>
-    <post-process name="populate-gene-spanning-qtls" dump="true"/>
-    <post-process name="populate-interpro-data" dump="true"/>
-    
-    <!-- add features -->
-    <post-process name="create-intron-features"/>
+    <!-- legfed features -->
+    <post-process name="legfed-create-gene-flanking-regions"/>
+    <post-process name="legfed-create-supercontig-flanking-regions"/>
+    <post-process name="legfed-create-intron-features"/>
+
+    <!-- core features -->
     <post-process name="create-intergenic-region-features"/>
-    <post-process name="create-gene-flanking-features"/> 
+
+    <!-- legfed references and collections -->
+    <post-process name="legfed-create-go-annotations"/>
+    <post-process name="legfed-create-ontology-parent-annotations"/>
+    <post-process name="legfed-create-exon-gene-references"/>
+    <post-process name="legfed-create-protein-gene-references"/>
+    <post-process name="legfed-create-qtl-linkagegroup-references"/>
+
+    <post-process name="legfed-populate-gene-spanning-qtls"/>
+    <post-process name="legfed-populate-interpro-data"/>
+    <post-process name="legfed-populate-linkagegroup-lengths"/>
+
+    <post-process name="legfed-populate-publications"/>
     
-    <!-- create various references and collections -->
-    <post-process name="populate-located-features"/>
+    <!-- core references and collections -->
     <post-process name="populate-child-features"/>
     <post-process name="create-references" />
     <post-process name="create-chromosome-locations-and-lengths"/>
@@ -139,3 +150,4 @@
   </post-processing>
 
 </project>
+

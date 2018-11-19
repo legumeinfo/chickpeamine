@@ -1,3 +1,0 @@
-#!/bin/sh
-echo "********** chickpeamine/dbmodel **********"
-ant -v clean build-db generate-update-triggers

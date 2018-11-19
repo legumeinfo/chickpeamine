@@ -1,8 +1,8 @@
 *~
-build
-dist
 *.log
-sql/
-webapp/go-restart
-webapp/resources/webapp/model/
-webapp/src/
+.gradle
+/build
+/dbmodel/build
+/webapp/build
+/webapp/src/main/java/
+/webapp/src/main/webapp/model/
