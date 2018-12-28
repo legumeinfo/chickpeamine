@@ -1,5 +1,12 @@
+#!/bin/sh
+
 ## clear the logs (quietly)
 rm -f intermine.log
+
+## echo a big marker so we can see when this run started in the scroll
+echo "##################################################################################################"
+echo "###################################### integrate #################################################"
+echo "##################################################################################################"
 
 ## ontologies
 #./gradlew integrate -Psource=so
@@ -11,6 +18,7 @@ rm -f intermine.log
 #./gradlew integrate -Psource=lis-genomics --stacktrace
 #./gradlew integrate -Psource=lis-proteins --stacktrace
 #./gradlew integrate -Psource=lis-genetics --stacktrace
+
 #./gradlew integrate -Psource=lis-featureprop --stacktrace
 #./gradlew integrate -Psource=lis-genefamilies --stacktrace
 #./gradlew integrate -Psource=lis-reactome-file --stacktrace
@@ -19,15 +27,14 @@ rm -f intermine.log
 ## ALL of the chado loaders must be DONE before continuing, because identifiers are changed by SQL below
 ## -----------------------------------------------------------------------------------------------------
 
-./gradlew generateUpdateTriggers
-psql chickpeamine-dev -f dbmodel/build/resources/main/add-update-triggers.sql
-psql chickpeamine-dev -f ../legfed-intermine-sql/cleanup-chado-bugs.sql
-psql chickpeamine-dev -f ../legfed-intermine-sql/update-organism-genus-species.sql
-psql chickpeamine-dev -f ../legfed-intermine-sql/update-organism-descriptions.sql
-psql chickpeamine-dev -f ../legfed-intermine-sql/update-strain-names.sql
-psql chickpeamine-dev -f ../legfed-intermine-sql/update-strain-descriptions.sql
-psql chickpeamine-dev -f ../legfed-intermine-sql/update-identifiers.sql
-psql chickpeamine-dev -f dbmodel/build/resources/main/remove-update-triggers.sql
+#./gradlew generateUpdateTriggers
+#psql chickpeamine-dev -f dbmodel/build/resources/main/add-update-triggers.sql
+#psql chickpeamine-dev -f ../legfed-intermine-sql/cleanup-chado-bugs.sql
+#psql chickpeamine-dev -f ../legfed-intermine-sql/update-organism-genus-species.sql
+#psql chickpeamine-dev -f ../legfed-intermine-sql/update-organism-descriptions.sql
+#psql chickpeamine-dev -f ../legfed-intermine-sql/update-strain-descriptions.sql
+#psql chickpeamine-dev -f ../legfed-intermine-sql/update-identifiers.sql
+#psql chickpeamine-dev -f dbmodel/build/resources/main/remove-update-triggers.sql
 
 ## file sources
 ./gradlew integrate -Psource=chickpea-expression --stacktrace
