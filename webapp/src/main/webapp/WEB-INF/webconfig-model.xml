@@ -71,7 +71,7 @@
       <fieldconfig fieldExpr="organism.name" label="Organism" />
       <fieldconfig fieldExpr="strain.primaryIdentifier" label="Strain" />
       <fieldconfig fieldExpr="primaryIdentifier" label="DB identifier" />
-      <fieldconfig fieldExpr="secondaryIdentifier" label="Alt identifier"/>
+      <fieldconfig fieldExpr="name" label="Name" />
       <fieldconfig fieldExpr="length" displayer="/model/sequenceShortDisplayerWithField.jsp" showInInlineCollection="true" showInSummary="true" />
       <fieldconfig fieldExpr="description" doNotTruncate="true" />
     </fields>
@@ -102,7 +102,7 @@
   <class className="org.intermine.model.bio.SequenceFeature">
     <fields>
       <fieldconfig fieldExpr="organism.name" label="Organism"/>
-      <fieldconfig fieldExpr="strain.name" label="Strain"/>
+      <fieldconfig fieldExpr="strain.primaryIdentifier" label="Strain"/>
       <fieldconfig fieldExpr="primaryIdentifier" label="DB identifier"/>
       <fieldconfig fieldExpr="length" displayer="/model/sequenceShortDisplayerWithField.jsp" showInInlineCollection="true" showInSummary="true" />
       <fieldconfig fieldExpr="chromosome.primaryIdentifier" showInInlineCollection="true" showInSummary="false" label="Chromosome" />
@@ -114,8 +114,10 @@
   <class className="org.intermine.model.bio.Protein">
     <fields>
       <fieldconfig fieldExpr="primaryIdentifier" label="DB identifier"/>
+      <fieldconfig fieldExpr="secondaryIdentifier" label="Alt identifier"/>
       <fieldconfig fieldExpr="length" displayer="/model/sequenceShortDisplayerWithField.jsp" />
-      <fieldconfig fieldExpr="gene.primaryIdentifier" label="Gene"/>
+      <fieldconfig fieldExpr="note" />
+      <fieldconfig fieldExpr="strain.primaryIdentifier" label="Strain"/>
     </fields>
   </class>
 
@@ -195,7 +197,7 @@
   <class className="org.intermine.model.bio.Strain">
     <headerconfig>
       <titles>
-        <title mainTitles="primaryIdentifier|name"/>
+        <title mainTitles="primaryIdentifier"/>
       </titles>
     </headerconfig>
     <fields>
