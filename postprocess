@@ -38,8 +38,8 @@ echo "##########################################################################
 # ./gradlew postprocess -Pprocess=create-overlap-view
 
 ## these must be run after any data is changed
-# ./gradlew postprocess -Pprocess=create-attribute-indexes
-# ./gradlew postprocess -Pprocess=summarise-objectstore
+./gradlew postprocess -Pprocess=create-attribute-indexes
+./gradlew postprocess -Pprocess=summarise-objectstore
 
 ## these talk to Solr
 ./gradlew postprocess -Pprocess=create-autocomplete-index

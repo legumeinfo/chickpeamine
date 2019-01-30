@@ -27,14 +27,14 @@ echo "##########################################################################
 ## ALL of the chado loaders must be DONE before continuing, because identifiers are changed by SQL below
 ## -----------------------------------------------------------------------------------------------------
 
-#./gradlew generateUpdateTriggers
-#psql chickpeamine-dev -f dbmodel/build/resources/main/add-update-triggers.sql
+./gradlew generateUpdateTriggers
+psql chickpeamine-dev -f dbmodel/build/resources/main/add-update-triggers.sql
 #psql chickpeamine-dev -f ../legfed-intermine-sql/cleanup-chado-bugs.sql
-#psql chickpeamine-dev -f ../legfed-intermine-sql/update-organism-genus-species.sql
-#psql chickpeamine-dev -f ../legfed-intermine-sql/update-organism-descriptions.sql
-#psql chickpeamine-dev -f ../legfed-intermine-sql/update-strain-descriptions.sql
 #psql chickpeamine-dev -f ../legfed-intermine-sql/update-identifiers.sql
-#psql chickpeamine-dev -f dbmodel/build/resources/main/remove-update-triggers.sql
+psql chickpeamine-dev -f ../legfed-intermine-sql/update-organism-genus-species.sql
+psql chickpeamine-dev -f ../legfed-intermine-sql/update-organism-descriptions.sql
+psql chickpeamine-dev -f ../legfed-intermine-sql/update-strain-descriptions.sql
+psql chickpeamine-dev -f dbmodel/build/resources/main/remove-update-triggers.sql
 
 ## file sources
-./gradlew integrate -Psource=chickpea-expression --stacktrace
+#./gradlew integrate -Psource=chickpea-expression --stacktrace
