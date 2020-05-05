@@ -1,143 +1,257 @@
 <project type="bio">
   <property name="target.model" value="genomic"/>
   <property name="common.os.prefix" value="common"/>
-  <property name="intermine.properties.file" value="chickpeamine.properties"/>
-
+  <property name="intermine.properties.file" value="beanmine.properties"/>
   <sources>
 
-    <!-- chado genomics - initiates SequenceFeatures, so run first -->
-    <source name="lis-genomics" type="legfed-chado-db" dump="true">
-      <property name="source.db.name" value="lis-chado"/>
-      <property name="organisms" value="3827"/>
-      <property name="strains" value="ICC4958 CDCFrontier"/>
-      <property name="dataSetTitle" value="LIS chado genomic data"/>
-      <property name="dataSourceName" value="LIS Tripal database"/>
-      <property name="converter.class" value="org.intermine.bio.dataconversion.ChadoDBConverter"/>
-      <property name="processors" value="org.intermine.bio.dataconversion.SequenceProcessor"/>
+    <!-- Gene_families/legume.genefam.fam1.M65K/ -->
+    <source name="lis.fam1-genefamily" type="lis-genefamily" dump="true">
+      <property name="dataSetUrl" value="https://legumeinfo.org/data/public/Gene_families/legume.genefam.fam1.M65K/"/>
+      <property name="dataSetDescription" value="LIS gene families"/>
+      <property name="src.data.dir" location="/data/LIS/Gene_families/legume.genefam.fam1.M65K"/>
     </source>
 
-    <!-- chado proteins -->
-    <source name="lis-proteins" type="legfed-chado-db" dump="true">
-      <property name="source.db.name" value="lis-chado"/>
-      <property name="organisms" value="3827"/>
-      <property name="strains" value="ICC4958 CDCFrontier"/>
-      <property name="dataSetTitle" value="LIS chado protein data"/>
-      <property name="dataSourceName" value="LIS chado database"/>
-      <property name="converter.class" value="org.intermine.bio.dataconversion.ChadoDBConverter"/>
-      <property name="processors" value="org.intermine.bio.dataconversion.ProteinProcessor"/>
+    <!-- ################## -->
+    <!-- Cicer arietinum -->
+    <!-- ################## -->
+
+    <!-- about_this_collection -->
+    <!-- ├── description_Cicer_arietinum.yml -->
+    <!-- └── strains_Cicer_arietinum.yml -->
+    <source name="cicar-about" type="lis-about" dump="true">
+      <property name="dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/about_this_collection/"/>
+      <property name="dataSetDescription" value="Cicer arietinum organism and strain information."/>
+      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/about_this_collection"/>
     </source>
 
-    <!-- chado genetics - initiates other genetic items, so run second -->
-    <source name="lis-genetics" type="legfed-chado-db" dump="true">
-      <property name="source.db.name" value="lis-chado"/>
-      <property name="organisms" value="3827"/>
-      <property name="strains" value="ICC4958 CDCFrontier"/>
-      <property name="dataSetTitle" value="LIS chado genetic data"/>
-      <property name="dataSourceName" value="LIS chado database"/>
-      <property name="converter.class" value="org.intermine.bio.dataconversion.ChadoDBConverter"/>
-      <property name="processors" value="org.intermine.bio.dataconversion.GeneticProcessor"/>
+    <!-- ################################ -->
+    <!-- Cicer arietinum CDCFrontier.gnm1 -->
+    <!-- ################################ -->
+
+    <!-- CDCFrontier.gnm1.GkHc -->
+    <!-- ├── cicar.CDCFrontier.gnm1.GkHc.genome_main.fna -->
+    <source name="cicar.CDCFrontier.gnm1-chromosome-fasta" type="lis-fasta" dump="true">
+      <property name="lis-fasta.dataSetDescription" value="LIS datastore genomic FASTA file for Cicer arietinum CDCFrontier"/>
+      <property name="lis-fasta.dataSetVersion" value="gnm1"/>
+      <property name="lis-fasta.dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/CDCFrontier.gnm1.GkHc/"/>
+      <property name="lis-fasta.taxonId" value="3827"/>
+      <property name="lis-fasta.strainIdentifier" value="CDCFrontier"/>
+      <property name="lis-fasta.sequenceType" value="dna"/>
+      <property name="lis-fasta.className" value="org.intermine.model.bio.Chromosome"/>
+      <property name="lis-fasta.classAttribute" value="primaryIdentifier"/>
+      <property name="lis-fasta.licence" value="ODC Public Domain Dedication and Licence (PDDL)"/>
+      <property name="lis-fasta.includes" value="cicar.CDCFrontier.gnm1.GkHc.genome_main.fna"/>
+      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/CDCFrontier.gnm1.GkHc"/>
     </source>
 
-    <!-- chado featureprop attributes -->
-    <source name="lis-featureprop" type="legfed-chado-db" dump="true">
-      <property name="source.db.name" value="lis-chado"/>
-      <property name="organisms" value="3827"/>
-      <property name="strains" value="ICC4958 CDCFrontier"/>
-      <property name="dataSetTitle" value="LIS chado feature properties"/>
-      <property name="dataSourceName" value="LIS chado database"/>
-      <property name="converter.class" value="org.intermine.bio.dataconversion.ChadoDBConverter"/>
-      <property name="processors" value="org.intermine.bio.dataconversion.FeaturePropProcessor"/>
+    <!-- CDCFrontier.gnm1.ann1.nRhs -->
+    <!-- ├── cicar.CDCFrontier.gnm1.ann1.nRhs.cds.fna -->
+    <!-- ├── cicar.CDCFrontier.gnm1.ann1.nRhs.gene_models_main.gff3 -->
+    <!-- ├── cicar.CDCFrontier.gnm1.ann1.nRhs.protein.faa -->
+    <source name="cicar.CDCFrontier.gnm1.ann1-cds-fasta" type="lis-fasta" dump="true">
+      <property name="lis-fasta.dataSetDescription" value="CDS models for the cicar.CDCFrontier.gnm1 genome"/>
+      <property name="lis-fasta.dataSetVersion" value="gnm1.ann1"/>
+      <property name="lis-fasta.dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/CDCFrontier.gnm1.ann1.nRhs/"/>
+      <property name="lis-fasta.taxonId" value="3827"/>
+      <property name="lis-fasta.strainIdentifier" value="CDCFrontier"/>
+      <property name="lis-fasta.sequenceType" value="dna"/>
+      <property name="lis-fasta.className" value="org.intermine.model.bio.CDS"/>
+      <property name="lis-fasta.classAttribute" value="primaryIdentifier"/>
+      <property name="lis-fasta.licence" value="ODC Public Domain Dedication and Licence (PDDL)"/>
+      <property name="lis-fasta.geneAttribute" value="locus"/>
+      <property name="lis-fasta.includes" value="cicar.CDCFrontier.gnm1.ann1.nRhs.cds.fna"/>
+      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/CDCFrontier.gnm1.ann1.nRhs"/>
+    </source>
+    <source name="cicar.CDCFrontier.gnm1.ann1-gff" type="lis-gff" dump="true">
+      <property name="gff3.dataSourceName" value="LIS Datastore"/>
+      <property name="gff3.dataSourceUrl" value="https://legumeinfo.org/data/public/"/>
+      <property name="gff3.dataSourceDescription" value="A collaborative, community resource to facilitate crop improvement by integrating genetic, genomic, and trait data across legume species."/>
+      <property name="gff3.dataSetTitle" value="cicar.CDCFrontier.gnm1.ann1.nRhs.gene_models_main.gff3"/>
+      <property name="gff3.dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/CDCFrontier.gnm1.ann1.nRhs/"/>
+      <property name="gff3.dataSetDescription" value="Gene model annotation for the cicar.CDCFrontier.gnm1 genome"/>
+      <property name="gff3.dataSetVersion" value="gnm1.ann1"/>
+      <property name="gff3.licence" value="ODC Public Domain Dedication and Licence (PDDL)"/>
+      <property name="gff3.taxonId" value="3827"/>
+      <property name="gff3.strainIdentifier" value="CDCFrontier"/>
+      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/CDCFrontier.gnm1.ann1.nRhs"/>
+    </source>
+    <source name="cicar.CDCFrontier.gnm1.ann1-protein-fasta" type="lis-fasta" dump="true">
+      <property name="lis-fasta.dataSetDescription" value="Protein models for the cicar.CDCFrontier.gnm1 genome"/>
+      <property name="lis-fasta.dataSetVersion" value="gnm1.ann1"/>
+      <property name="lis-fasta.dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/CDCFrontier.gnm1.ann1.nRhs/"/>
+      <property name="lis-fasta.taxonId" value="3827"/>
+      <property name="lis-fasta.strainIdentifier" value="CDCFrontier"/>
+      <property name="lis-fasta.sequenceType" value="protein"/>
+      <property name="lis-fasta.className" value="org.intermine.model.bio.Protein"/>
+      <property name="lis-fasta.classAttribute" value="primaryIdentifier"/>
+      <property name="lis-fasta.licence" value="ODC Public Domain Dedication and Licence (PDDL)"/>
+      <property name="lis-fasta.geneAttribute" value="locus"/>
+      <property name="lis-fasta.includes" value="cicar.CDCFrontier.gnm1.ann1.nRhs.protein.faa"/>
+      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/CDCFrontier.gnm1.ann1.nRhs"/>
     </source>
 
-    <!-- chado gene families and resulting homology - based on featureprop -->
-    <source name="lis-genefamilies" type="legfed-chado-db" dump="true">
-      <property name="source.db.name" value="lis-chado"/>
-      <property name="organisms" value="3827"/>
-      <property name="strains" value="ICC4958 CDCFrontier"/>
-      <property name="homologue.organisms" value="3920 3847 3880 3885 130453 130454 3827 157791 57577 3914 3821 3871 34305"/>
-      <property name="homologue.strains" value="IT97K-499-35 Williams82 A17 G19833 V14167 K30076 CDCFrontier ICC4958 VC1973A MilvusB Gyeongwon ICPL87119 Tanjil MG20"/>
-      <property name="dataSetTitle" value="LIS chado gene families"/>
-      <property name="dataSourceName" value="LIS chado database"/>
-      <property name="converter.class" value="org.intermine.bio.dataconversion.ChadoDBConverter"/>
-      <property name="processors" value="org.intermine.bio.dataconversion.GeneFamilyProcessor"/>
+    <!-- CDCFrontier.gnm1.ann1.syn1.7Bqh -->
+    <!-- ├── cicar.CDCFrontier.gnm1.ann1.x.cicar.CDCFrontier.gnm1.ann1.gff -->
+    <!-- ├── cicar.CDCFrontier.gnm1.ann1.x.cicar.ICC4958.gnm2.ann1.gff -->
+    <!-- ├── cicar.CDCFrontier.gnm1.ann1.x.lotja.MG20.gnm3.ann1.gff -->
+    <!-- ├── cicar.CDCFrontier.gnm1.ann1.x.medtr.A17_HM341.gnm4.ann2.gff -->
+    <!-- ├── cicar.CDCFrontier.gnm1.ann1.x.tripr.MilvusB.gnm2.ann1.gff -->
+    <source name="cicar.CDCFrontier.gnm1.ann1.syn1-synteny" type="lis-synteny" dump="true"> 
+      <property name="dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/CDCFrontier.gnm1.ann1.syn1.7Bqh/"/>
+      <property name="dataSetDescription" value="Synteny between cicar.CDCFrontier.gnm1 and other species."/>
+      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/CDCFrontier.gnm1.ann1.syn1.7Bqh"/>
     </source>
 
-    <!-- chado + reactome file -->
-    <source name="lis-reactome-file" type="legfed-chado-db" dump="true">
-      <property name="source.db.name" value="lis-chado"/>
-      <property name="reactome.filename" value="/home/shokin/legfed-intermine-data/plant-reactome/gene_ids_by_pathway_and_species.tab"/>
-      <property name="organisms" value="3827"/>
-      <property name="strains" value="ICC4958 CDCFrontier"/>
-      <property name="dataSetTitle" value="LIS protein data + plant reactome"/>
-      <property name="dataSourceName" value="LIS chado database"/>
-      <property name="converter.class" value="org.intermine.bio.dataconversion.ChadoDBConverter"/>
-      <property name="processors" value="org.intermine.bio.dataconversion.ReactomeProcessor"/>
+    <!-- ############################ -->
+    <!-- Cicer arietinum ICC4958.gnm2 -->
+    <!-- ############################ -->
+
+    <!-- ICC4958.gnm2.bg5m -->
+    <!-- ├── cicar.ICC4958.gnm2.bg5m.genome_main.fna -->
+    <source name="cicar.ICC4958.gnm2-chromosome-fasta" type="lis-fasta" dump="true">
+      <property name="lis-fasta.dataSetDescription" value="LIS datastore genomic FASTA file for Cicer arietinum ICC4958"/>
+      <property name="lis-fasta.dataSetVersion" value="gnm2"/>
+      <property name="lis-fasta.dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/ICC4958.gnm2.bg5m/"/>
+      <property name="lis-fasta.taxonId" value="3827"/>
+      <property name="lis-fasta.strainIdentifier" value="ICC4958"/>
+      <property name="lis-fasta.sequenceType" value="dna"/>
+      <property name="lis-fasta.className" value="org.intermine.model.bio.Chromosome"/>
+      <property name="lis-fasta.classAttribute" value="primaryIdentifier"/>
+      <property name="lis-fasta.licence" value="ODC Public Domain Dedication and Licence (PDDL)"/>
+      <property name="lis-fasta.includes" value="cicar.ICC4958.gnm2.bg5m.genome_main.fna"/>
+      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/ICC4958.gnm2.bg5m"/>
     </source>
 
-    <!-- NON-CHADO -->
-
-    <!-- Chickpea expression -->
-    <source name="chickpea-expression" type="legfed-expression" dump="true">
-      <property name="src.data.dir" location="/home/shokin/legfed-intermine-data/chickpea-expression"/>
+    <!-- ICC4958.gnm2.ann1.LCVX -->
+    <!-- ├── cicar.ICC4958.gnm2.ann1.LCVX.cds_primaryTranscript.fna -->
+    <!-- ├── cicar.ICC4958.gnm2.ann1.LCVX.gene_models_main.gff3 -->
+    <!-- ├── cicar.ICC4958.gnm2.ann1.LCVX.protein_primaryTranscript.faa -->
+    <source name="cicar.ICC4958.gnm2.ann1-cds-fasta" type="lis-fasta" dump="true">
+      <property name="lis-fasta.dataSetDescription" value="CDS models for the cicar.ICC4958.gnm2 genome"/>
+      <property name="lis-fasta.dataSetVersion" value="gnm2.ann1"/>
+      <property name="lis-fasta.dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/ICC4958.gnm2.ann1.LCVX/"/>
+      <property name="lis-fasta.taxonId" value="3827"/>
+      <property name="lis-fasta.strainIdentifier" value="ICC4958"/>
+      <property name="lis-fasta.sequenceType" value="dna"/>
+      <property name="lis-fasta.className" value="org.intermine.model.bio.CDS"/>
+      <property name="lis-fasta.classAttribute" value="primaryIdentifier"/>
+      <property name="lis-fasta.licence" value="ODC Public Domain Dedication and Licence (PDDL)"/>
+      <property name="lis-fasta.geneAttribute" value="locus"/>
+      <property name="lis-fasta.includes" value="cicar.ICC4958.gnm2.ann1.LCVX.cds_primaryTranscript.fna"/>
+      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/ICC4958.gnm2.ann1.LCVX"/>
+    </source>
+    <source name="cicar.ICC4958.gnm2.ann1-gff" type="lis-gff" dump="true">
+      <property name="gff3.dataSourceName" value="LIS Datastore"/>
+      <property name="gff3.dataSourceUrl" value="https://legumeinfo.org/data/public/"/>
+      <property name="gff3.dataSourceDescription" value="A collaborative, community resource to facilitate crop improvement by integrating genetic, genomic, and trait data across legume species."/>
+      <property name="gff3.dataSetTitle" value="cicar.ICC4958.gnm2.ann1.LCVX.gene_models_main.gff3"/>
+      <property name="gff3.dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/ICC4958.gnm2.ann1.LCVX/"/>
+      <property name="gff3.dataSetDescription" value="Gene model annotation for the cicar.ICC4958.gnm2 genome"/>
+      <property name="gff3.dataSetVersion" value="gnm2.ann1"/>
+      <property name="gff3.licence" value="ODC Public Domain Dedication and Licence (PDDL)"/>
+      <property name="gff3.taxonId" value="3827"/>
+      <property name="gff3.strainIdentifier" value="ICC4958"/>
+      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/ICC4958.gnm2.ann1.LCVX"/>
+    </source>
+    <source name="cicar.ICC4958.gnm2.ann1-protein-fasta" type="lis-fasta" dump="true">
+      <property name="lis-fasta.dataSetDescription" value="Protein models for the cicar.ICC4958.gnm2 genome"/>
+      <property name="lis-fasta.dataSetVersion" value="gnm2.ann1"/>
+      <property name="lis-fasta.dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/ICC4958.gnm2.ann1.LCVX/"/>
+      <property name="lis-fasta.taxonId" value="3827"/>
+      <property name="lis-fasta.strainIdentifier" value="ICC4958"/>
+      <property name="lis-fasta.sequenceType" value="protein"/>
+      <property name="lis-fasta.className" value="org.intermine.model.bio.Protein"/>
+      <property name="lis-fasta.classAttribute" value="primaryIdentifier"/>
+      <property name="lis-fasta.licence" value="ODC Public Domain Dedication and Licence (PDDL)"/>
+      <property name="lis-fasta.geneAttribute" value="locus"/>
+      <property name="lis-fasta.includes" value="cicar.ICC4958.gnm2.ann1.LCVX.protein_primaryTranscript.faa"/>
+      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/ICC4958.gnm2.ann1.LCVX"/>
     </source>
 
-    <!-- ONTOLOGIES -->
+    <!-- ICC4958.gnm2.ann1.syn1.PdvJ -->
+    <!-- ├── cicar.ICC4958.gnm2.ann1.x.cicar.ICC4958.gnm1.ann1.gff -->
+    <!-- ├── cicar.ICC4958.gnm2.ann1.x.cicar.ICC4958.gnm2.ann1.gff -->
+    <!-- ├── cicar.ICC4958.gnm2.ann1.x.lotja.MG20.gnm3.ann1.gff -->
+    <!-- ├── cicar.ICC4958.gnm2.ann1.x.medtr.A17_HM341.gnm4.ann2.gff -->
+    <!-- ├── cicar.ICC4958.gnm2.ann1.x.tripr.MilvusB.gnm2.ann1.gff -->
+    <source name="cicar.ICC4958.gnm2.ann1.syn1-synteny" type="lis-synteny" dump="true"> 
+      <property name="dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/ICC4958.gnm2.ann1.syn1.PdvJ/"/>
+      <property name="dataSetDescription" value="Synteny between cicar.ICC4958.gnm2 and other species."/>
+      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/ICC4958.gnm2.ann1.syn1.PdvJ"/>
+    </source>
+
+    <!-- ICC4958.gnm2.ann1.samplesetN.expr1.4Y7B/ -->
+    <!-- ├── cicar.ICC4958.gnm2.ann1.samplesetN.expr1.4Y7B.exprSamples.tsv -->
+    <!-- ├── cicar.ICC4958.gnm2.ann1.samplesetN.expr1.4Y7B.exprSource.txt -->
+    <!-- ├── cicar.ICC4958.gnm2.ann1.samplesetN.expr1.4Y7B.genesSamplesTpm.tsv -->
+    <source name="cicar.ICC4958.gnm2.ann1-expression" type="lis-expression" dump="true">
+      <property name="dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/ICC4958.gnm2.ann1.samplesetN.expr1.4Y7B/"/>
+      <property name="dataSetDescription" value="Cicer arietinum ICC4958 transcription during flower development from Singh, et al. (2013)."/>
+      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/ICC4958.gnm2.ann1.samplesetN.expr1.4Y7B"/>
+    </source>
+
+    <!-- ############### -->
+    <!-- ONTOLOGIES ETC. -->
+    <!-- ############### -->
     
+    <!-- INTERPRO -->
+    <source name="interpro" type="interpro">
+      <property name="data.source.name" value="InterPro"/>
+      <property name="data.source.description" value="XML file listing each InterPro entry."/>
+      <property name="data.source.url" value="ftp://ftp.ebi.ac.uk/pub/databases/interpro/"/>
+      <property name="src.data.dir" location="/data/InterPro/"/>
+    </source>
+    <source name="interpro-go" type="interpro-go">
+      <property name="data.source.name" value="InterPro2GO"/>
+      <property name="data.source.description" value="Mappings of InterPro entries to Gene Ontology (GO) terms."/>
+      <property name="data.source.url" value="ftp://ftp.ebi.ac.uk/pub/databases/interpro/"/>
+      <property name="src.data.dir" location="/data/InterPro/ontology/"/>
+    </source>
+
     <!-- gene ontology -->
     <source name="go" type="go">
-      <property name="src.data.file" location="/home/shokin/legfed-intermine-data/gene-ontology/go-basic.obo"/>
+      <property name="src.data.file" location="/data/gene-ontology/go-basic.obo"/>
     </source>
 
     <!-- sequence ontology -->
     <source name="so" type="so">
-      <property name="src.data.file" location="/home/shokin/SO-Ontologies/so-simple.obo"/>
-    </source>
-
-    <!-- trait ontology -->
-    <source name="to" type="legfed-trait-ontology">
-      <property name="src.data.file" location="/home/shokin/plant-trait-ontology/to.obo"/>
-      <property name="ontology.prefix" value="TO"/>
+      <property name="src.data.file" location="/data/SO-Ontologies/so-simple.obo"/>
     </source>
 
     <!-- plant ontology -->
-    <source name="po" type="legfed-plant-ontology">
-      <property name="src.data.file" location="/home/shokin/legfed-intermine-data/plant-ontology/po.obo"/>
+    <source name="plant-ontology" type="plant-ontology">
+      <property name="src.data.file" location="/data/plant-ontology/po.obo"/>
       <property name="ontology.prefix" value="PO"/>
+    </source>
+
+    <!-- plant trait ontology -->
+    <source name="plant-trait-ontology" type="plant-trait-ontology">
+      <property name="src.data.file" location="/data/plant-trait-ontology/to.obo"/>
+      <property name="ontology.prefix" value="TO"/>
     </source>
 
   </sources>
 
+  <!-- ############### -->
+  <!-- post-processing -->
+  <!-- ############### -->
+  
   <post-processing>
-
-    <!-- source-specific post-processing -->
-    <post-process name="do-sources" dump="true"/>
-
-    <!-- legfed features -->
-    <post-process name="legfed-create-gene-flanking-regions"/>
-    <post-process name="legfed-create-supercontig-flanking-regions"/>
-    <post-process name="legfed-create-intron-features"/>
-
-    <!-- core features -->
-    <post-process name="create-intergenic-region-features"/>
-
-    <!-- legfed references and collections -->
-    <post-process name="legfed-create-go-annotations"/>
-    <post-process name="legfed-create-ontology-parent-annotations"/>
-    <post-process name="legfed-create-exon-gene-references"/>
-    <post-process name="legfed-create-protein-gene-references"/>
-    <post-process name="legfed-create-qtl-linkagegroup-references"/>
-
-    <post-process name="legfed-populate-gene-spanning-qtls"/>
-    <post-process name="legfed-populate-interpro-data"/>
-    <post-process name="legfed-populate-linkagegroup-lengths"/>
-
-    <post-process name="legfed-populate-publications"/>
-    
-    <!-- core references and collections -->
-    <post-process name="populate-child-features"/>
+    <!-- IM CORE -->
+    <post-process name="do-sources" />
+    <post-process name="create-utr-references"/>
     <post-process name="create-references" />
+    <post-process name="make-spanning-locations"/>
     <post-process name="create-chromosome-locations-and-lengths"/>
+    <post-process name="create-intergenic-region-features"/>
     <post-process name="transfer-sequences"/>
+    <post-process name="populate-child-features"/>
+    <post-process name="create-gene-flanking-features"/>
+
+    <!-- LIS -->
+    <post-process name="lis-create-protein-transcript-gene-references"/>
+    <post-process name="lis-create-cds-references"/>
+    <post-process name="lis-populate-publications"/>
 
     <!-- views and indexes, after all data is set -->
     <post-process name="create-location-overlap-index"/>
@@ -146,8 +260,6 @@
     <post-process name="summarise-objectstore"/>
     <post-process name="create-autocomplete-index"/>
     <post-process name="create-search-index"/>
-
   </post-processing>
 
 </project>
-
