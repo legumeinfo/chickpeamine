@@ -1,8 +1,7 @@
 *~
 *.log
 .gradle
-/build
-/dbmodel/build
-/webapp/build
-/webapp/src/main/java/
-/webapp/src/main/webapp/model/
+build
+webapp/src/main/java/
+webapp/src/main/webapp/model/
+libs

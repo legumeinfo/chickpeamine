@@ -180,14 +180,14 @@
       <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/ICC4958.gnm2.ann1.syn1.PdvJ"/>
     </source>
 
-    <!-- ICC4958.gnm2.ann1.samplesetN.expr1.4Y7B/ -->
-    <!-- ├── cicar.ICC4958.gnm2.ann1.samplesetN.expr1.4Y7B.exprSamples.tsv -->
-    <!-- ├── cicar.ICC4958.gnm2.ann1.samplesetN.expr1.4Y7B.exprSource.txt -->
-    <!-- ├── cicar.ICC4958.gnm2.ann1.samplesetN.expr1.4Y7B.genesSamplesTpm.tsv -->
+    <!-- ICC4958.gnm2.ann1.expr.4Y7B/ -->
+    <!-- ├── cicar.ICC4958.gnm2.ann1.expr.4Y7B.samples.tsv -->
+    <!-- ├── cicar.ICC4958.gnm2.ann1.expr.4Y7B.source.txt -->
+    <!-- ├── cicar.ICC4958.gnm2.ann1.expr.4Y7B.values.tsv -->
     <source name="cicar.ICC4958.gnm2.ann1-expression" type="lis-expression" dump="true">
-      <property name="dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/ICC4958.gnm2.ann1.samplesetN.expr1.4Y7B/"/>
+      <property name="dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/ICC4958.gnm2.ann1.expr.4Y7B/"/>
       <property name="dataSetDescription" value="Cicer arietinum ICC4958 transcription during flower development from Singh, et al. (2013)."/>
-      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/ICC4958.gnm2.ann1.samplesetN.expr1.4Y7B"/>
+      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/ICC4958.gnm2.ann1.expr.4Y7B"/>
     </source>
 
     <!-- ############### -->
@@ -249,11 +249,16 @@
     <post-process name="create-gene-flanking-features"/>
 
     <!-- LIS -->
-    <post-process name="lis-create-protein-transcript-gene-references"/>
-    <post-process name="lis-create-cds-references"/>
+    <post-process name="lis-populate-cds-gene-references"/>
+    <post-process name="lis-populate-cds-protein-references"/>
+    <post-process name="lis-populate-cds-transcript-references"/>
+    <post-process name="lis-populate-gene-protein-collections"/>
+    <post-process name="lis-populate-qtl-gene-collections"/>
     <post-process name="lis-populate-publications"/>
+    <post-process name="lis-populate-transcript-gene-references"/>
+    <post-process name="lis-populate-transcript-protein-references"/>
 
-    <!-- views and indexes, after all data is set -->
+    <!-- VIEWS AND INDEXES -->
     <post-process name="create-location-overlap-index"/>
     <post-process name="create-overlap-view" />
     <post-process name="create-attribute-indexes"/>
