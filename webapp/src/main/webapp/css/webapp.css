@@ -94,7 +94,7 @@ table td {
 }
 
 li {
-    margin: 5px 30px;
+    margin-left: 30px;
 }
 
 /* =HEADER TOP
@@ -114,8 +114,9 @@ li {
 }
 
 #header h1, #header h1 a:link, #header h1 a:visited {
-    margin: 4px;
+    margin: 0px;
     padding: 0px;
+    margin-top: 5px;
     color: #FFF;
     font-size: 1.4em;
     font-weight: bold;
@@ -386,16 +387,22 @@ ul#submenulist li span {
     color: #333;
 }
 
-div.templateLine {
+.templateLine {
     margin-bottom: 5px;
     margin-top: 5px;
 }
 
-div.templateDetails {
+.templateDetails {
     margin-left: 15px;
     /* needed to prevent the peekaboo bug on IE:
      http://www.positioniseverything.net/explorer/peekaboo.html */
     height: 0.01%;
+}
+
+.templateDescription {
+    background-color: lightgray;
+    padding: 5px;
+    margin: 2px 0;
 }
 
 .boxTopRight {
@@ -1414,7 +1421,7 @@ td.resBar span.tablePageLinks img { margin:0; padding:0; margin-right:5px; verti
 
 /* template entry */
 ol#constraintList.templateForm label, ol#constraintList.templateForm input[type="checkbox"] { vertical-align:middle !important; }
-ol#constraintList.templateForm select { height:25px; }
+ol#constraintList.templateForm select {  }
 
 /* constraint logic (query.do) */
 #constraintLogicContainer span#constraintLogic { cursor:pointer; padding-right:14px; background-image:url('../images/icons/edit-8.png');
@@ -1740,13 +1747,32 @@ div.bottom-footer ul.footer-links li:not(:last-child) { margin-right:5px; }
 div.bottom-footer ul.footer-links li:not(:last-child):after { content:'|'; color:#E2E1E6; display:block; float:right; margin-left:5px; }
 div.bottom-footer ul.footer-links li a { text-decoration:none; text-transform:capitalize; }
 
-.begin-thirdBox {
-    margin-left:14px;
-    height:80px;
-    width:250px;
-    padding:5px;
+/* Dynamic dataCategories.jsp */
+.dataSource {
+    font-size: 125%;
+    padding: 5px;
+    font-weight: bold;
+    background-color: lightgray;
+    border: 1px solid gray;
+    margin: 2px;
+}
+
+.dataSet-row {
+    display: grid;
+    grid-template-columns: 70% 25% 5%;
+}
+
+.dataSet-description {
+    padding: 3px;
+    text-align: left;
+}
+
+.dataSet-name {
+    padding: 3px;
+    text-align: left;
+}
+
+.dataSet-link {
+    padding: 3px;
     text-align:center;
-    background-color:lightgray;
-    border:2px solid gray;
-    font-size:12px;
 }

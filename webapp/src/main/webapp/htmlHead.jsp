@@ -23,7 +23,7 @@
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
 
 <!-- canvasXpress -->
-<link rel="stylesheet" href="css/canvasXpress.css"type="text/css"/>
+<link rel="stylesheet" href="css/canvasXpress-old.css"type="text/css"/>
 <script type="text/javascript" src="js/canvasXpress-old.min.js"></script>
 
 <%
