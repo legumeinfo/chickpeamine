@@ -9,14 +9,18 @@ echo "##########################################################################
 echo "##########################################################################################################################################"
 echo ""
 
-## ontologies and InterPro and LIS gene families
+## ontologies
 ./gradlew integrate -Psource=go --stacktrace
 ./gradlew integrate -Psource=so --stacktrace
 ./gradlew integrate -Psource=plant-ontology --stacktrace
 ./gradlew integrate -Psource=plant-trait-ontology --stacktrace
 ./gradlew integrate -Psource=chickpea-crop-ontology --stacktrace
+
+## InterPro
 ./gradlew integrate -Psource=interpro --stacktrace
 ./gradlew integrate -Psource=interpro-go --stacktrace
+
+## LIS gene families
 ./gradlew integrate -Psource=lis.fam1-genefamily --stacktrace
 
 ###########
@@ -46,3 +50,4 @@ echo ""
 ./gradlew integrate -Psource=cicar.ICC4958.gnm2.ann1-protein-fasta --stacktrace
 ./gradlew integrate -Psource=cicar.ICC4958.gnm2.ann1.syn1-synteny --stacktrace
 ./gradlew integrate -Psource=cicar.ICC4958.gnm2.ann1-expression --stacktrace
+./gradlew integrate -Psource=cicar.ICC4958.gnm2.ann1-gfa --stacktrace

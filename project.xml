@@ -206,6 +206,7 @@
     <!-- ├── cicar.ICC4958.gnm2.ann1.LCVX.cds_primaryTranscript.fna -->
     <!-- ├── cicar.ICC4958.gnm2.ann1.LCVX.gene_models_main.gff3 -->
     <!-- ├── cicar.ICC4958.gnm2.ann1.LCVX.protein_primaryTranscript.faa -->
+    <!-- ├── cicar.ICC4958.gnm2.ann1.LCVX.legfed_v1_0.M65K.gfa.tsv -->
     <source name="cicar.ICC4958.gnm2.ann1-cds-fasta" type="lis-fasta" dump="true">
       <property name="lis-fasta.dataSetDescription" value="CDS models for the cicar.ICC4958.gnm2 genome"/>
       <property name="lis-fasta.dataSetVersion" value="gnm2.ann1"/>
@@ -245,6 +246,11 @@
       <property name="lis-fasta.licence" value="ODC Public Domain Dedication and Licence (PDDL)"/>
       <property name="lis-fasta.geneAttribute" value="locus"/>
       <property name="lis-fasta.includes" value="cicar.ICC4958.gnm2.ann1.LCVX.protein_primaryTranscript.faa"/>
+      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/ICC4958.gnm2.ann1.LCVX"/>
+    </source>
+    <source name="cicar.ICC4958.gnm2.ann1-gfa" type="lis-gfa" dump="true"> 
+      <property name="dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/ICC4958.gnm2.ann1.LCVX/"/>
+      <property name="dataSetDescription" value="Gene family assignments for Cicer arietinum ICC4958 genes and proteins."/>
       <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/ICC4958.gnm2.ann1.LCVX"/>
     </source>
 
