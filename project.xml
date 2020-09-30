@@ -8,6 +8,7 @@
     <source name="lis.fam1-genefamily" type="lis-genefamily" dump="true">
       <property name="dataSetUrl" value="https://legumeinfo.org/data/public/Gene_families/legume.genefam.fam1.M65K/"/>
       <property name="dataSetDescription" value="LIS gene families"/>
+      <property name="desired.organisms" value="aradu araip arahy arath cajca cicar cucsa glyma glyso lotja lupan medtr phalu phavu prupe solly tripr vigan vigra vigun vitvi"/>
       <property name="src.data.dir" location="/data/LIS/Gene_families/legume.genefam.fam1.M65K"/>
     </source>
 
@@ -98,6 +99,16 @@
       <property name="lis-fasta.licence" value="ODC Public Domain Dedication and Licence (PDDL)"/>
       <property name="lis-fasta.geneAttribute" value="locus"/>
       <property name="lis-fasta.includes" value="cicar.CDCFrontier.gnm1.ann1.nRhs.protein.faa"/>
+      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/CDCFrontier.gnm1.ann1.nRhs"/>
+    </source>
+    <source name="cicar.CDCFrontier.gnm1.ann1-gfa" type="lis-gfa" dump="true">
+      <property name="data.set.url" value="https://legumeinfo.org/data/public/Cicer_arietinum/CDCFrontier.gnm1.ann1.nRhs/"/>
+      <property name="data.set.description" value="LIS Gene family membership for Cicer arietinum CDCFrontier."/>
+      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/CDCFrontier.gnm1.ann1.nRhs"/>
+    </source>
+    <source name="cicar.CDCFrontier.gnm1.ann1-pathway" type="lis-pathway" dump="true">
+      <property name="data.set.url" value="https://legumeinfo.org/data/public/Cicer_arietinum/CDCFrontier.gnm1.ann1.nRhs/"/>
+      <property name="data.set.description" value="Plant Reactome pathways for Cicer arietinum CDCFrontier."/>
       <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/CDCFrontier.gnm1.ann1.nRhs"/>
     </source>
 
@@ -253,6 +264,11 @@
       <property name="dataSetDescription" value="Gene family assignments for Cicer arietinum ICC4958 genes and proteins."/>
       <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/ICC4958.gnm2.ann1.LCVX"/>
     </source>
+    <source name="cicar.ICC4958.gnm2.ann1-pathway" type="lis-pathway" dump="true"> 
+      <property name="dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/ICC4958.gnm2.ann1.LCVX/"/>
+      <property name="dataSetDescription" value="Plant reactome pathways for Cicer arietinum ICC4958 genes from gene family membership with Cicer arietinum CDCFrontier genes."/>
+      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/ICC4958.gnm2.ann1.LCVX"/>
+    </source>
 
     <!-- ICC4958.gnm2.ann1.syn1.PdvJ -->
     <!-- ├── cicar.ICC4958.gnm2.ann1.x.cicar.ICC4958.gnm1.ann1.gff -->
@@ -361,6 +377,7 @@
     <post-process name="lis-populate-publications"/>
     <post-process name="lis-populate-transcript-gene-references"/>
     <post-process name="lis-populate-transcript-protein-references"/>
+    <post-process name="lis-populate-protein-pathway-collections"/>
 
     <!-- VIEWS AND INDEXES -->
     <post-process name="create-location-overlap-index"/>
