@@ -424,7 +424,8 @@
       </titles>
     </headerconfig>
     <fields>
-      <fieldconfig fieldExpr="primaryIdentifier" label="Name"/>
+      <fieldconfig fieldExpr="primaryIdentifier" label="Identifier"/>
+      <fieldconfig fieldExpr="name" label="Name"/>
       <fieldconfig fieldExpr="description" label="Description"/>
     </fields>
   </class>
