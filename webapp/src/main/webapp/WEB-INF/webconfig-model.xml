@@ -126,9 +126,9 @@
       <fieldconfig fieldExpr="chromosomeLocation.start" showInInlineCollection="true" showInSummary="false" label="Start" />
       <fieldconfig fieldExpr="chromosomeLocation.end" showInInlineCollection="true" showInSummary="false" label="End" />
     </fields>
-  <!--   <bagdisplayers> -->
-  <!--     <displayer src="motifSearch.tile" showOnLeft="true"/> -->
-  <!--   </bagdisplayers> -->
+    <bagdisplayers>
+      <displayer src="motifSearch.tile" showOnLeft="true"/>
+    </bagdisplayers>
   </class>
 
   <class className="org.intermine.model.bio.IntergenicRegion">
