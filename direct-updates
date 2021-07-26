@@ -1,0 +1,24 @@
+#!/bin/sh
+
+MINENAME=chickpeamine
+DBNAME=chickpeamine-dev
+
+## add triggers
+./gradlew generateUpdateTriggers
+psql $DBNAME -f dbmodel/build/resources/main/add-update-triggers.sql
+
+## do updates
+cd ~/java/ncgr/intermine
+
+echo "########## cdsreferenceupdater ${MINENAME}"
+./cdsreferenceupdater $MINENAME
+
+echo "########## transcriptreferenceupdater $MINENAME"
+./transcriptreferenceupdater $MINENAME
+
+echo "########## update genefamily.size $DBNAME ##########"
+psql $DBNAME -c "UPDATE genefamily SET intermine_size = (SELECT count(*) FROM gene WHERE gene.genefamilyid=genefamily.id)"
+
+## remove triggers
+cd ~/$MINENAME
+psql $DBNAME -f dbmodel/build/resources/main/remove-update-triggers.sql

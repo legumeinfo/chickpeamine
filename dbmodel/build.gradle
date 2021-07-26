@@ -20,6 +20,11 @@ dependencies {
     compile group: "org.intermine", name: "intermine-resources", version: System.getProperty("imVersion") // for log4j
     compile fileTree(dir: '../libs', include: '*.jar')
     bioModel group: "org.intermine", name: "bio-model", version: System.getProperty("bioVersion"), transitive: false
+
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-collections4
+    compile group: 'org.apache.commons', name: 'commons-collections4', version: '4.4'
+    // https://mvnrepository.com/artifact/net.sourceforge.owlapi/owlapi-api
+    compile group: 'net.sourceforge.owlapi', name: 'owlapi-api', version: '5.1.17'
 }
 
 dbModelConfig {
@@ -29,8 +34,8 @@ dbModelConfig {
     defaultInterminePropertiesFile = "default.intermine.production.properties"
     userProfileObjectStoreName = "os.userprofile-production"
     userProfileModelName = "userprofile"
-    soTermListFilePath = "dbmodel/resources/so_terms"
-    soAdditionFilePath = "dbmodel/build/so_additions.xml"
+    soTermListFilePath = "$rootDir/dbmodel/resources/so_terms"
+    soAdditionFilePath = "$rootDir/dbmodel/build/so_additions.xml"
 }
 
 mineDBModelConfig {

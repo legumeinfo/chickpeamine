@@ -1,16 +1,8 @@
 <project type="bio">
   <property name="target.model" value="genomic"/>
   <property name="common.os.prefix" value="common"/>
-  <property name="intermine.properties.file" value="beanmine.properties"/>
+  <property name="intermine.properties.file" value="chickpeamine.properties"/>
   <sources>
-
-    <!-- Gene_families/legume.genefam.fam1.M65K/ -->
-    <source name="lis.fam1-genefamily" type="lis-genefamily" dump="true">
-      <property name="dataSetUrl" value="https://legumeinfo.org/data/public/Gene_families/legume.genefam.fam1.M65K/"/>
-      <property name="dataSetDescription" value="LIS gene families"/>
-      <property name="desired.organisms" value="aradu araip arahy arath cajca cicar cucsa glyma glyso lotja lupan medtr phalu phavu prupe solly tripr vigan vigra vigun vitvi"/>
-      <property name="src.data.dir" location="/data/LIS/Gene_families/legume.genefam.fam1.M65K"/>
-    </source>
 
     <!-- ################## -->
     <!-- Cicer arietinum -->
@@ -20,32 +12,19 @@
     <!-- ├── description_Cicer_arietinum.yml -->
     <!-- └── strains_Cicer_arietinum.yml -->
     <source name="cicar-about" type="lis-about" dump="true">
-      <property name="dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/about_this_collection/"/>
+      <property name="dataSetUrl" value="https://legumeinfo.org/data/v2/Cicer/arietinum/about_this_collection/"/>
       <property name="dataSetDescription" value="Cicer arietinum organism and strain information."/>
-      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/about_this_collection"/>
+      <property name="src.data.dir" location="/data/v2/Cicer/arietinum/about_this_collection"/>
     </source>
 
-
-    <!-- mixed.gwas.KEY4/ -->
-    <!-- ├── cicar.mixed.gwas.KEY4.10-3389-fpls-2018-00190.gwas.tsv -->
-    <!-- └── cicar.mixed.gwas.KEY4.10-3389-fpls-2018-00190.phen.tsv -->
-    <source name="cicar.mixed.gwas" type="lis-gwas" dump="true">
-      <property name="dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/mixed.gwas.KEY4/"/>
-      <property name="dataSetDescription" value="Cicer arietinum GWAS for drought-tolerant yield traits from Li, et al. 2018"/>
-      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/mixed.gwas.KEY4"/>
-    </source>
-
-
-    <!-- ################################ -->
-    <!-- Cicer arietinum CDCFrontier.gnm1 -->
-    <!-- ################################ -->
-
-    <!-- CDCFrontier.gnm1.GkHc -->
+    <!-- genomes/CDCFrontier.gnm1.GkHc -->
     <!-- ├── cicar.CDCFrontier.gnm1.GkHc.genome_main.fna -->
-    <source name="cicar.CDCFrontier.gnm1-chromosome-fasta" type="lis-fasta" dump="true">
+    <!-- └── README.CDCFrontier.gnm1.GkHc.yml -->
+    <source name="CDCFrontier.gnm1.GkHc" type="lis-fasta" dump="true">
+      <property name="lis-fasta.dataSetTitle" value="CDCFrontier.gnm1.GkHc"/>
       <property name="lis-fasta.dataSetDescription" value="LIS datastore genomic FASTA file for Cicer arietinum CDCFrontier"/>
       <property name="lis-fasta.dataSetVersion" value="gnm1"/>
-      <property name="lis-fasta.dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/CDCFrontier.gnm1.GkHc/"/>
+      <property name="lis-fasta.dataSetUrl" value="https://legumeinfo.org/data/v2/Cicer/arietinum/genomes/CDCFrontier.gnm1.GkHc/"/>
       <property name="lis-fasta.taxonId" value="3827"/>
       <property name="lis-fasta.strainIdentifier" value="CDCFrontier"/>
       <property name="lis-fasta.sequenceType" value="dna"/>
@@ -53,17 +32,21 @@
       <property name="lis-fasta.classAttribute" value="primaryIdentifier"/>
       <property name="lis-fasta.licence" value="ODC Public Domain Dedication and Licence (PDDL)"/>
       <property name="lis-fasta.includes" value="cicar.CDCFrontier.gnm1.GkHc.genome_main.fna"/>
-      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/CDCFrontier.gnm1.GkHc"/>
+      <property name="src.data.dir" location="/data/v2/Cicer/arietinum/genomes/CDCFrontier.gnm1.GkHc"/>
     </source>
-
-    <!-- CDCFrontier.gnm1.ann1.nRhs -->
+    
+    <!-- annotations/CDCFrontier.gnm1.ann1.nRhs -->
     <!-- ├── cicar.CDCFrontier.gnm1.ann1.nRhs.cds.fna -->
     <!-- ├── cicar.CDCFrontier.gnm1.ann1.nRhs.gene_models_main.gff3 -->
+    <!-- ├── cicar.CDCFrontier.gnm1.ann1.nRhs.legfed_v1_0.M65K.gfa.tsv -->
     <!-- ├── cicar.CDCFrontier.gnm1.ann1.nRhs.protein.faa -->
-    <source name="cicar.CDCFrontier.gnm1.ann1-cds-fasta" type="lis-fasta" dump="true">
-      <property name="lis-fasta.dataSetDescription" value="CDS models for the cicar.CDCFrontier.gnm1 genome"/>
+    <!-- ├── cicar.CDCFrontier.gnm1.ann1.nRhs.transcript.fna -->
+    <!-- └── README.CDCFrontier.gnm1.ann1.nRhs.yml -->
+    <source name="CDCFrontier.gnm1.ann1.nRhs.cds" type="lis-fasta" dump="true">
+      <property name="lis-fasta.dataSetTitle" value="CDCFrontier.gnm1.ann1.nRhs"/>
+      <property name="lis-fasta.dataSetDescription" value="CDCFrontier.gnm1.ann1 genome annotation"/>
       <property name="lis-fasta.dataSetVersion" value="gnm1.ann1"/>
-      <property name="lis-fasta.dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/CDCFrontier.gnm1.ann1.nRhs/"/>
+      <property name="lis-fasta.dataSetUrl" value="https://legumeinfo.org/data/v2/Cicer/arietinum/annotations/CDCFrontier.gnm1.ann1.nRhs/"/>
       <property name="lis-fasta.taxonId" value="3827"/>
       <property name="lis-fasta.strainIdentifier" value="CDCFrontier"/>
       <property name="lis-fasta.sequenceType" value="dna"/>
@@ -72,25 +55,41 @@
       <property name="lis-fasta.licence" value="ODC Public Domain Dedication and Licence (PDDL)"/>
       <property name="lis-fasta.geneAttribute" value="locus"/>
       <property name="lis-fasta.includes" value="cicar.CDCFrontier.gnm1.ann1.nRhs.cds.fna"/>
-      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/CDCFrontier.gnm1.ann1.nRhs"/>
+      <property name="src.data.dir" location="/data/v2/Cicer/arietinum/annotations/CDCFrontier.gnm1.ann1.nRhs"/>
     </source>
-    <source name="cicar.CDCFrontier.gnm1.ann1-gff" type="lis-gff" dump="true">
+    <source name="CDCFrontier.gnm1.ann1.nRhs.transcript" type="lis-fasta" dump="true">
+      <property name="lis-fasta.dataSetTitle" value="CDCFrontier.gnm1.ann1.nRhs"/>
+      <property name="lis-fasta.dataSetDescription" value="CDCFrontier.gnm1.ann1 genome annotation"/>
+      <property name="lis-fasta.dataSetVersion" value="gnm1.ann1"/>
+      <property name="lis-fasta.dataSetUrl" value="https://legumeinfo.org/data/v2/Cicer/arietinum/annotations/CDCFrontier.gnm1.ann1.nRhs/"/>
+      <property name="lis-fasta.taxonId" value="3827"/>
+      <property name="lis-fasta.strainIdentifier" value="CDCFrontier"/>
+      <property name="lis-fasta.sequenceType" value="dna"/>
+      <property name="lis-fasta.className" value="org.intermine.model.bio.MRNA"/>
+      <property name="lis-fasta.classAttribute" value="primaryIdentifier"/>
+      <property name="lis-fasta.licence" value="ODC Public Domain Dedication and Licence (PDDL)"/>
+      <property name="lis-fasta.geneAttribute" value="locus"/>
+      <property name="lis-fasta.includes" value="cicar.CDCFrontier.gnm1.ann1.nRhs.transcript.fna"/>
+      <property name="src.data.dir" location="/data/v2/Cicer/arietinum/annotations/CDCFrontier.gnm1.ann1.nRhs"/>
+    </source>
+    <source name="CDCFrontier.gnm1.ann1.nRhs.gene_models_main" type="lis-gff" dump="true">
       <property name="gff3.dataSourceName" value="LIS Datastore"/>
-      <property name="gff3.dataSourceUrl" value="https://legumeinfo.org/data/public/"/>
+      <property name="gff3.dataSourceUrl" value="https://legumeinfo.org/data/v2/"/>
       <property name="gff3.dataSourceDescription" value="A collaborative, community resource to facilitate crop improvement by integrating genetic, genomic, and trait data across legume species."/>
-      <property name="gff3.dataSetTitle" value="cicar.CDCFrontier.gnm1.ann1.nRhs.gene_models_main.gff3"/>
-      <property name="gff3.dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/CDCFrontier.gnm1.ann1.nRhs/"/>
-      <property name="gff3.dataSetDescription" value="Gene model annotation for the cicar.CDCFrontier.gnm1 genome"/>
+      <property name="gff3.dataSetTitle" value="CDCFrontier.gnm1.ann1.nRhs"/>
+      <property name="gff3.dataSetUrl" value="https://legumeinfo.org/data/v2/Cicer/arietinum/annotations/CDCFrontier.gnm1.ann1.nRhs/"/>
+      <property name="gff3.dataSetDescription" value="CDCFrontier.gnm1.ann1 genome annotation"/>
       <property name="gff3.dataSetVersion" value="gnm1.ann1"/>
       <property name="gff3.licence" value="ODC Public Domain Dedication and Licence (PDDL)"/>
       <property name="gff3.taxonId" value="3827"/>
       <property name="gff3.strainIdentifier" value="CDCFrontier"/>
-      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/CDCFrontier.gnm1.ann1.nRhs"/>
+      <property name="src.data.dir" location="/data/v2/Cicer/arietinum/annotations/CDCFrontier.gnm1.ann1.nRhs"/>
     </source>
-    <source name="cicar.CDCFrontier.gnm1.ann1-protein-fasta" type="lis-fasta" dump="true">
-      <property name="lis-fasta.dataSetDescription" value="Protein models for the cicar.CDCFrontier.gnm1 genome"/>
+    <source name="CDCFrontier.gnm1.ann1.nRhs.protein" type="lis-fasta" dump="true">
+      <property name="lis-fasta.dataSetTitle" value="CDCFrontier.gnm1.ann1.nRhs"/>
+      <property name="lis-fasta.dataSetDescription" value="CDCFrontier.gnm1.ann1 genome annotation"/> 
       <property name="lis-fasta.dataSetVersion" value="gnm1.ann1"/>
-      <property name="lis-fasta.dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/CDCFrontier.gnm1.ann1.nRhs/"/>
+      <property name="lis-fasta.dataSetUrl" value="https://legumeinfo.org/data/v2/Cicer/arietinum/annotations/CDCFrontier.gnm1.ann1.nRhs/"/>
       <property name="lis-fasta.taxonId" value="3827"/>
       <property name="lis-fasta.strainIdentifier" value="CDCFrontier"/>
       <property name="lis-fasta.sequenceType" value="protein"/>
@@ -99,110 +98,59 @@
       <property name="lis-fasta.licence" value="ODC Public Domain Dedication and Licence (PDDL)"/>
       <property name="lis-fasta.geneAttribute" value="locus"/>
       <property name="lis-fasta.includes" value="cicar.CDCFrontier.gnm1.ann1.nRhs.protein.faa"/>
-      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/CDCFrontier.gnm1.ann1.nRhs"/>
+      <property name="src.data.dir" location="/data/v2/Cicer/arietinum/annotations/CDCFrontier.gnm1.ann1.nRhs"/>
     </source>
-    <source name="cicar.CDCFrontier.gnm1.ann1-gfa" type="lis-gfa" dump="true">
-      <property name="data.set.url" value="https://legumeinfo.org/data/public/Cicer_arietinum/CDCFrontier.gnm1.ann1.nRhs/"/>
-      <property name="data.set.description" value="LIS Gene family membership for Cicer arietinum CDCFrontier."/>
-      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/CDCFrontier.gnm1.ann1.nRhs"/>
+    <source name="CDCFrontier.gnm1.ann1.nRhs.legfed_v1_0.M65K.gfa" type="lis-gfa" dump="true">
+      <property name="dataSetName" value="CDCFrontier.gnm1.ann1.nRhs"/>
+      <property name="dataSetUrl" value="https://legumeinfo.org/data/v2/Cicer/arietinum/annotations/CDCFrontier.gnm1.ann1.nRhs/"/>
+      <property name="dataSetDescription" value="CDCFrontier.gnm1.ann1 genome annotation"/> 
+      <property name="src.data.dir" location="/data/v2/Cicer/arietinum/annotations/CDCFrontier.gnm1.ann1.nRhs"/>
     </source>
-    <source name="cicar.CDCFrontier.gnm1.ann1-pathway" type="lis-pathway" dump="true">
-      <property name="data.set.url" value="https://legumeinfo.org/data/public/Cicer_arietinum/CDCFrontier.gnm1.ann1.nRhs/"/>
-      <property name="data.set.description" value="Plant Reactome pathways for Cicer arietinum CDCFrontier."/>
-      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/CDCFrontier.gnm1.ann1.nRhs"/>
+    <source name="CDCFrontier.gnm1.ann1.nRhs.legfed_v1_0.M65K.pathway" type="lis-pathway" dump="true">
+      <property name="dataSetName" value="CDCFrontier.gnm1.ann1.nRhs"/>
+      <property name="dataSetUrl" value="https://legumeinfo.org/data/v2/Cicer/arietinum/annotations/CDCFrontier.gnm1.ann1.nRhs/"/>
+      <property name="dataSetDescription" value="CDCFrontier.gnm1.ann1 genome annotation"/> 
+      <property name="src.data.dir" location="/data/v2/Cicer/arietinum/annotations/CDCFrontier.gnm1.ann1.nRhs"/>
     </source>
 
-    <!-- CDCFrontier.gnm1.mrk.KEY4/ -->
-    <!-- └── cicar.CDCFrontier.gnm1.mrk.31036963.gff3 -->
-    <source name="cicar.CDCFrontier.gnm1.mrk-gff" type="lis-gff" dump="true">
+    <!-- markers/CDCFrontier.gnm1.mrk.Varshney_Thudi_2019 -->
+    <!-- └── cicar.CDCFrontier.gnm1.mrk.Varshney_Thudi_2019.gff3 -->
+    <source name="CDCFrontier.gnm1.mrk.Varshney_Thudi_2019" type="lis-gff" dump="true">
       <property name="gff3.dataSourceName" value="LIS Datastore"/>
-      <property name="gff3.dataSourceUrl" value="https://legumeinfo.org/data/public/"/>
+      <property name="gff3.dataSourceUrl" value="https://legumeinfo.org/data/v2/"/>
       <property name="gff3.dataSourceDescription" value="A collaborative, community resource to facilitate crop improvement by integrating genetic, genomic, and trait data across legume species."/>
-      <property name="gff3.dataSetTitle" value="cicar.CDCFrontier.gnm1.mrk.KEY4.31036963.gff3"/>
-      <property name="gff3.dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/CDCFrontier.gnm1.mrk.KEY4/"/>
+      <property name="gff3.dataSetTitle" value="CDCFrontier.gnm1.mrk.Varshney_Thudi_2019"/>
+      <property name="gff3.dataSetUrl" value="https://legumeinfo.org/data/v2/Cicer/arietinum/markers/CDCFrontier.gnm1.mrk.Varshney_Thudi_2019/"/>
       <property name="gff3.dataSetDescription" value="Cowpea SNP positions on the cicar.CDCFrontier.gnm1 genome assembly from Varshney, et al. (2019)"/>
       <property name="gff3.dataSetVersion" value="gnm1"/>
       <property name="gff3.licence" value="ODC Public Domain Dedication and Licence (PDDL)"/>
       <property name="gff3.taxonId" value="3827"/>
       <property name="gff3.strainIdentifier" value="CDCFrontier"/>
-      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/CDCFrontier.gnm1.mrk.KEY4"/>
+      <property name="src.data.dir" location="/data/v2/Cicer/arietinum/markers/CDCFrontier.gnm1.mrk.Varshney_Thudi_2019"/>
     </source>
 
-    <!-- CDCFrontier.gnm1.ann1.syn1.7Bqh -->
-    <!-- ├── cicar.CDCFrontier.gnm1.ann1.x.cicar.CDCFrontier.gnm1.ann1.gff -->
-    <!-- ├── cicar.CDCFrontier.gnm1.ann1.x.cicar.ICC4958.gnm2.ann1.gff -->
-    <!-- ├── cicar.CDCFrontier.gnm1.ann1.x.lotja.MG20.gnm3.ann1.gff -->
-    <!-- ├── cicar.CDCFrontier.gnm1.ann1.x.medtr.A17_HM341.gnm4.ann2.gff -->
-    <!-- ├── cicar.CDCFrontier.gnm1.ann1.x.tripr.MilvusB.gnm2.ann1.gff -->
-    <source name="cicar.CDCFrontier.gnm1.ann1.syn1-synteny" type="lis-synteny" dump="true"> 
-      <property name="dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/CDCFrontier.gnm1.ann1.syn1.7Bqh/"/>
+    <!-- synteny/CDCFrontier.gnm1.ann1.syn.7Bqh -->
+    <!-- ├── cicar.CDCFrontier.gnm1.ann1.x.cicar.CDCFrontier.gnm1.ann1.7Bqh.gff3 -->
+    <!-- ├── cicar.CDCFrontier.gnm1.ann1.x.cicar.ICC4958.gnm2.ann1.7Bqh.gff3 -->
+    <!-- ├── cicar.CDCFrontier.gnm1.ann1.x.lotja.MG20.gnm3.ann1.7Bqh.gff3 -->
+    <!-- ├── cicar.CDCFrontier.gnm1.ann1.x.medtr.A17_HM341.gnm4.ann2.7Bqh.gff3 -->
+    <!-- ├── cicar.CDCFrontier.gnm1.ann1.x.tripr.MilvusB.gnm2.ann1.7Bqh.gff3 -->
+    <!-- └── README.CDCFrontier.gnm1.ann1.syn.7Bqh.yml -->
+    <source name="CDCFrontier.gnm1.ann1.syn.7Bqh" type="lis-synteny" dump="true">
+      <property name="dataSetName" value="CDCFrontier.gnm1.ann1.syn.7Bqh"/>
+      <property name="dataSetUrl" value="https://legumeinfo.org/data/v2/Cicer/arietinum/synteny/CDCFrontier.gnm1.ann1.syn.7Bqh/"/>
       <property name="dataSetDescription" value="Synteny between cicar.CDCFrontier.gnm1 and other species."/>
-      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/CDCFrontier.gnm1.ann1.syn1.7Bqh"/>
+      <property name="src.data.dir" location="/data/v2/Cicer/arietinum/synteny/CDCFrontier.gnm1.ann1.syn.7Bqh"/>
     </source>
 
-    <!-- ################################## -->
-    <!-- Cicer arietinum CDCFrontier.gnm263 -->
-    <!-- ################################## -->
-
-    <!-- CDCFrontier.gnm263.KEY4/ -->
-    <!-- └── cicar.CDCFrontier.gnm26363.KEY4.genome_main.fna -->
-    <source name="cicar.CDCFrontier.gnm263-chromosome-fasta" type="lis-fasta" dump="true">
-      <property name="lis-fasta.dataSetDescription" value="LIS datastore genomic FASTA file for Cicer arietinum CDCFrontier.gnm263 (kabuli 2.6.3)"/>
-      <property name="lis-fasta.dataSetVersion" value="gnm263"/>
-      <property name="lis-fasta.dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/CDCFrontier.gnm263.bg5m/"/>
-      <property name="lis-fasta.taxonId" value="3827"/>
-      <property name="lis-fasta.strainIdentifier" value="CDCFrontier"/>
-      <property name="lis-fasta.sequenceType" value="dna"/>
-      <property name="lis-fasta.className" value="org.intermine.model.bio.Chromosome"/>
-      <property name="lis-fasta.classAttribute" value="primaryIdentifier"/>
-      <property name="lis-fasta.licence" value="ODC Public Domain Dedication and Licence (PDDL)"/>
-      <property name="lis-fasta.includes" value="cicar.CDCFrontier.gnm263.KEY4.genome_main.fna"/>
-      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/CDCFrontier.gnm263.KEY4"/>
-    </source>
-
-    <!-- CDCFrontier.gnm263.ann1.KEY4/ -->
-    <!-- └── cicar.CDCFrontier.gnm263.ann1.KEY4.gene_models_main.gff3 -->
-    <source name="cicar.CDCFrontier.gnm263.ann1-gff" type="lis-gff" dump="true">
-      <property name="gff3.dataSourceName" value="LIS Datastore"/>
-      <property name="gff3.dataSourceUrl" value="https://legumeinfo.org/data/public/"/>
-      <property name="gff3.dataSourceDescription" value="A collaborative, community resource to facilitate crop improvement by integrating genetic, genomic, and trait data across legume species."/>
-      <property name="gff3.dataSetTitle" value="cicar.CDCFrontier.gnm263.ann1.KEY4.gene_models_main.gff3"/>
-      <property name="gff3.dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/CDCFrontier.gnm263.ann1.KEY4/"/>
-      <property name="gff3.dataSetDescription" value="Gene model annotation for the cicar.CDCFrontier.gnm263 (kabuli 2.6.3) genome"/>
-      <property name="gff3.dataSetVersion" value="gnm263.ann1"/>
-      <property name="gff3.licence" value="ODC Public Domain Dedication and Licence (PDDL)"/>
-      <property name="gff3.taxonId" value="3827"/>
-      <property name="gff3.strainIdentifier" value="CDCFrontier"/>
-      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/CDCFrontier.gnm263.ann1.KEY4"/>
-    </source>
-
-    <!-- CDCFrontier.gnm263.mrk.KEY4/ -->
-    <!-- └── cicar.CDCFrontier.gnm263.mrk.KEY4.29515606.gff3 -->
-    <source name="cicar.CDCFrontier.gnm263.mrk-gff" type="lis-gff" dump="true">
-      <property name="gff3.dataSourceName" value="LIS Datastore"/>
-      <property name="gff3.dataSourceUrl" value="https://legumeinfo.org/data/public/"/>
-      <property name="gff3.dataSourceDescription" value="A collaborative, community resource to facilitate crop improvement by integrating genetic, genomic, and trait data across legume species."/>
-      <property name="gff3.dataSetTitle" value="cicar.CDCFrontier.gnm263.mrk.KEY4.29515606.gff3"/>
-      <property name="gff3.dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/CDCFrontier.gnm263.mrk.KEY4/"/>
-      <property name="gff3.dataSetDescription" value="Cowpea SNP positions (Li et al. 2018) on the cicar.CDCFrontier.gnm263 (kabuli 2.6.3) genome assembly"/>
-      <property name="gff3.dataSetVersion" value="gnm263"/>
-      <property name="gff3.licence" value="ODC Public Domain Dedication and Licence (PDDL)"/>
-      <property name="gff3.taxonId" value="3827"/>
-      <property name="gff3.strainIdentifier" value="CDCFrontier"/>
-      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/CDCFrontier.gnm263.mrk.KEY4"/>
-    </source>
-
-
-    <!-- ############################ -->
-    <!-- Cicer arietinum ICC4958.gnm2 -->
-    <!-- ############################ -->
-
-    <!-- ICC4958.gnm2.bg5m -->
+    <!-- genomes/ICC4958.gnm2.bg5m -->
     <!-- ├── cicar.ICC4958.gnm2.bg5m.genome_main.fna -->
-    <source name="cicar.ICC4958.gnm2-chromosome-fasta" type="lis-fasta" dump="true">
+    <!-- └── README.ICC4958.gnm2.bg5m.yml -->
+    <source name="ICC4958.gnm2.bg5m" type="lis-fasta" dump="true">
+      <property name="lis-fasta.dataSetTitle" value="ICC4958.gnm2.bg5m"/>
       <property name="lis-fasta.dataSetDescription" value="LIS datastore genomic FASTA file for Cicer arietinum ICC4958"/>
       <property name="lis-fasta.dataSetVersion" value="gnm2"/>
-      <property name="lis-fasta.dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/ICC4958.gnm2.bg5m/"/>
+      <property name="lis-fasta.dataSetUrl" value="https://legumeinfo.org/data/v2/Cicer/arietinum/genomes/ICC4958.gnm2.bg5m/"/>
       <property name="lis-fasta.taxonId" value="3827"/>
       <property name="lis-fasta.strainIdentifier" value="ICC4958"/>
       <property name="lis-fasta.sequenceType" value="dna"/>
@@ -210,18 +158,21 @@
       <property name="lis-fasta.classAttribute" value="primaryIdentifier"/>
       <property name="lis-fasta.licence" value="ODC Public Domain Dedication and Licence (PDDL)"/>
       <property name="lis-fasta.includes" value="cicar.ICC4958.gnm2.bg5m.genome_main.fna"/>
-      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/ICC4958.gnm2.bg5m"/>
+      <property name="src.data.dir" location="/data/v2/Cicer/arietinum/genomes/ICC4958.gnm2.bg5m"/>
     </source>
 
-    <!-- ICC4958.gnm2.ann1.LCVX -->
-    <!-- ├── cicar.ICC4958.gnm2.ann1.LCVX.cds_primaryTranscript.fna -->
+    <!-- annotations/ICC4958.gnm2.ann1.LCVX -->
+    <!-- ├── cicar.ICC4958.gnm2.ann1.LCVX.cds.fna -->
     <!-- ├── cicar.ICC4958.gnm2.ann1.LCVX.gene_models_main.gff3 -->
-    <!-- ├── cicar.ICC4958.gnm2.ann1.LCVX.protein_primaryTranscript.faa -->
     <!-- ├── cicar.ICC4958.gnm2.ann1.LCVX.legfed_v1_0.M65K.gfa.tsv -->
-    <source name="cicar.ICC4958.gnm2.ann1-cds-fasta" type="lis-fasta" dump="true">
-      <property name="lis-fasta.dataSetDescription" value="CDS models for the cicar.ICC4958.gnm2 genome"/>
+    <!-- ├── cicar.ICC4958.gnm2.ann1.LCVX.protein.faa -->
+    <!-- ├── cicar.ICC4958.gnm2.ann1.LCVX.transcript.fna -->
+    <!-- └── README.ICC4958.gnm2.ann1.LCVX.yml -->
+    <source name="ICC4958.gnm2.ann1.LCVX.cds" type="lis-fasta" dump="true">
+      <property name="lis-fasta.dataSetTitle" value="ICC4958.gnm2.ann1.LCVX"/>
+      <property name="lis-fasta.dataSetDescription" value="ICC4958.gnm2.ann1 genome annotation"/>
       <property name="lis-fasta.dataSetVersion" value="gnm2.ann1"/>
-      <property name="lis-fasta.dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/ICC4958.gnm2.ann1.LCVX/"/>
+      <property name="lis-fasta.dataSetUrl" value="https://legumeinfo.org/data/v2/Cicer/arietinum/annotations/ICC4958.gnm2.ann1.LCVX/"/>
       <property name="lis-fasta.taxonId" value="3827"/>
       <property name="lis-fasta.strainIdentifier" value="ICC4958"/>
       <property name="lis-fasta.sequenceType" value="dna"/>
@@ -229,26 +180,42 @@
       <property name="lis-fasta.classAttribute" value="primaryIdentifier"/>
       <property name="lis-fasta.licence" value="ODC Public Domain Dedication and Licence (PDDL)"/>
       <property name="lis-fasta.geneAttribute" value="locus"/>
-      <property name="lis-fasta.includes" value="cicar.ICC4958.gnm2.ann1.LCVX.cds_primaryTranscript.fna"/>
-      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/ICC4958.gnm2.ann1.LCVX"/>
+      <property name="lis-fasta.includes" value="cicar.ICC4958.gnm2.ann1.LCVX.cds.fna"/>
+      <property name="src.data.dir" location="/data/v2/Cicer/arietinum/annotations/ICC4958.gnm2.ann1.LCVX"/>
     </source>
-    <source name="cicar.ICC4958.gnm2.ann1-gff" type="lis-gff" dump="true">
+    <source name="ICC4958.gnm2.ann1.LCVX.transcript" type="lis-fasta" dump="true">
+      <property name="lis-fasta.dataSetTitle" value="ICC4958.gnm2.ann1.LCVX"/>
+      <property name="lis-fasta.dataSetDescription" value="ICC4958.gnm2.ann1 genome annotation"/>
+      <property name="lis-fasta.dataSetVersion" value="gnm2.ann1"/>
+      <property name="lis-fasta.dataSetUrl" value="https://legumeinfo.org/data/v2/Cicer/arietinum/annotations/ICC4958.gnm2.ann1.LCVX/"/>
+      <property name="lis-fasta.taxonId" value="3827"/>
+      <property name="lis-fasta.strainIdentifier" value="ICC4958"/>
+      <property name="lis-fasta.sequenceType" value="dna"/>
+      <property name="lis-fasta.className" value="org.intermine.model.bio.MRNA"/>
+      <property name="lis-fasta.classAttribute" value="primaryIdentifier"/>
+      <property name="lis-fasta.licence" value="ODC Public Domain Dedication and Licence (PDDL)"/>
+      <property name="lis-fasta.geneAttribute" value="locus"/>
+      <property name="lis-fasta.includes" value="cicar.ICC4958.gnm2.ann1.LCVX.transcript.fna"/>
+      <property name="src.data.dir" location="/data/v2/Cicer/arietinum/annotations/ICC4958.gnm2.ann1.LCVX"/>
+    </source>
+    <source name="ICC4958.gnm2.ann1.LCVX.gene_models_main" type="lis-gff" dump="true">
       <property name="gff3.dataSourceName" value="LIS Datastore"/>
-      <property name="gff3.dataSourceUrl" value="https://legumeinfo.org/data/public/"/>
+      <property name="gff3.dataSourceUrl" value="https://legumeinfo.org/data/v2/"/>
       <property name="gff3.dataSourceDescription" value="A collaborative, community resource to facilitate crop improvement by integrating genetic, genomic, and trait data across legume species."/>
-      <property name="gff3.dataSetTitle" value="cicar.ICC4958.gnm2.ann1.LCVX.gene_models_main.gff3"/>
-      <property name="gff3.dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/ICC4958.gnm2.ann1.LCVX/"/>
-      <property name="gff3.dataSetDescription" value="Gene model annotation for the cicar.ICC4958.gnm2 genome"/>
+      <property name="gff3.dataSetTitle" value="ICC4958.gnm2.ann1.LCVX"/>
+      <property name="gff3.dataSetDescription" value="ICC4958.gnm2.ann1 genome annotation"/>
+      <property name="gff3.dataSetUrl" value="https://legumeinfo.org/data/v2/Cicer/arietinum/annotations/ICC4958.gnm2.ann1.LCVX/"/>
       <property name="gff3.dataSetVersion" value="gnm2.ann1"/>
       <property name="gff3.licence" value="ODC Public Domain Dedication and Licence (PDDL)"/>
       <property name="gff3.taxonId" value="3827"/>
       <property name="gff3.strainIdentifier" value="ICC4958"/>
-      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/ICC4958.gnm2.ann1.LCVX"/>
+      <property name="src.data.dir" location="/data/v2/Cicer/arietinum/annotations/ICC4958.gnm2.ann1.LCVX"/>
     </source>
-    <source name="cicar.ICC4958.gnm2.ann1-protein-fasta" type="lis-fasta" dump="true">
-      <property name="lis-fasta.dataSetDescription" value="Protein models for the cicar.ICC4958.gnm2 genome"/>
+    <source name="ICC4958.gnm2.ann1.LCVX.protein" type="lis-fasta" dump="true">
+      <property name="lis-fasta.dataSetTitle" value="ICC4958.gnm2.ann1.LCVX"/>
+      <property name="lis-fasta.dataSetDescription" value="ICC4958.gnm2.ann1 genome annotation"/>
       <property name="lis-fasta.dataSetVersion" value="gnm2.ann1"/>
-      <property name="lis-fasta.dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/ICC4958.gnm2.ann1.LCVX/"/>
+      <property name="lis-fasta.dataSetUrl" value="https://legumeinfo.org/data/v2/Cicer/arietinum/annotations/ICC4958.gnm2.ann1.LCVX/"/>
       <property name="lis-fasta.taxonId" value="3827"/>
       <property name="lis-fasta.strainIdentifier" value="ICC4958"/>
       <property name="lis-fasta.sequenceType" value="protein"/>
@@ -256,42 +223,90 @@
       <property name="lis-fasta.classAttribute" value="primaryIdentifier"/>
       <property name="lis-fasta.licence" value="ODC Public Domain Dedication and Licence (PDDL)"/>
       <property name="lis-fasta.geneAttribute" value="locus"/>
-      <property name="lis-fasta.includes" value="cicar.ICC4958.gnm2.ann1.LCVX.protein_primaryTranscript.faa"/>
-      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/ICC4958.gnm2.ann1.LCVX"/>
+      <property name="lis-fasta.includes" value="cicar.ICC4958.gnm2.ann1.LCVX.protein.faa"/>
+      <property name="src.data.dir" location="/data/v2/Cicer/arietinum/annotations/ICC4958.gnm2.ann1.LCVX"/>
     </source>
-    <source name="cicar.ICC4958.gnm2.ann1-gfa" type="lis-gfa" dump="true"> 
-      <property name="dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/ICC4958.gnm2.ann1.LCVX/"/>
-      <property name="dataSetDescription" value="Gene family assignments for Cicer arietinum ICC4958 genes and proteins."/>
-      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/ICC4958.gnm2.ann1.LCVX"/>
+    <source name="ICC4958.gnm2.ann1.LCVX.legfed_v1_0.M65K.gfa" type="lis-gfa" dump="true"> 
+      <property name="dataSetTitle" value="ICC4958.gnm2.ann1.LCVX"/>
+      <property name="dataSetDescription" value="ICC4958.gnm2.ann1 genome annotation"/>
+      <property name="dataSetUrl" value="https://legumeinfo.org/data/v2/Cicer/arietinum/annotations/ICC4958.gnm2.ann1.LCVX/"/>
+      <property name="src.data.dir" location="/data/v2/Cicer/arietinum/annotations/ICC4958.gnm2.ann1.LCVX"/>
     </source>
-    <source name="cicar.ICC4958.gnm2.ann1-pathway" type="lis-pathway" dump="true"> 
-      <property name="dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/ICC4958.gnm2.ann1.LCVX/"/>
-      <property name="dataSetDescription" value="Plant reactome pathways for Cicer arietinum ICC4958 genes from gene family membership with Cicer arietinum CDCFrontier genes."/>
-      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/ICC4958.gnm2.ann1.LCVX"/>
+    <source name="ICC4958.gnm2.ann1.LCVX.legfed_v1_0.M65K.pathway" type="lis-pathway" dump="true"> 
+      <property name="dataSetTitle" value="ICC4958.gnm2.ann1.LCVX"/>
+      <property name="dataSetDescription" value="ICC4958.gnm2.ann1 genome annotation"/>
+      <property name="dataSetUrl" value="https://legumeinfo.org/data/v2/Cicer/arietinum/annotations/ICC4958.gnm2.ann1.LCVX/"/>
+      <property name="src.data.dir" location="/data/v2/Cicer/arietinum/annotations/ICC4958.gnm2.ann1.LCVX"/>
     </source>
 
-    <!-- ICC4958.gnm2.ann1.syn1.PdvJ -->
-    <!-- ├── cicar.ICC4958.gnm2.ann1.x.cicar.ICC4958.gnm1.ann1.gff -->
-    <!-- ├── cicar.ICC4958.gnm2.ann1.x.cicar.ICC4958.gnm2.ann1.gff -->
-    <!-- ├── cicar.ICC4958.gnm2.ann1.x.lotja.MG20.gnm3.ann1.gff -->
-    <!-- ├── cicar.ICC4958.gnm2.ann1.x.medtr.A17_HM341.gnm4.ann2.gff -->
-    <!-- ├── cicar.ICC4958.gnm2.ann1.x.tripr.MilvusB.gnm2.ann1.gff -->
-    <source name="cicar.ICC4958.gnm2.ann1.syn1-synteny" type="lis-synteny" dump="true"> 
-      <property name="dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/ICC4958.gnm2.ann1.syn1.PdvJ/"/>
+    <!-- synteny/ICC4958.gnm2.ann1.syn.PdvJ -->
+    <!-- ├── cicar.ICC4958.gnm2.ann1.x.cicar.CDCFrontier.gnm1.ann1.PdvJ.gff3 -->
+    <!-- ├── cicar.ICC4958.gnm2.ann1.x.cicar.ICC4958.gnm2.ann1.PdvJ.gff3 -->
+    <!-- ├── cicar.ICC4958.gnm2.ann1.x.lotja.MG20.gnm3.ann1.PdvJ.gff3 -->
+    <!-- ├── cicar.ICC4958.gnm2.ann1.x.medtr.A17_HM341.gnm4.ann2.PdvJ.gff3 -->
+    <!-- ├── cicar.ICC4958.gnm2.ann1.x.tripr.MilvusB.gnm2.ann1.PdvJ.gff3 -->
+    <!-- └── README.ICC4958.gnm2.ann1.syn.PdvJ.yml -->
+    <source name="ICC4958.gnm2.ann1.syn.PdvJ" type="lis-synteny" dump="true">
+      <property name="dataSetName" value="ICC4958.gnm2.ann1.syn.PdvJ"/>
+      <property name="dataSetUrl" value="https://legumeinfo.org/data/v2/Cicer/arietinum/synteny/ICC4958.gnm2.ann1.syn.PdvJ/"/>
       <property name="dataSetDescription" value="Synteny between cicar.ICC4958.gnm2 and other species."/>
-      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/ICC4958.gnm2.ann1.syn1.PdvJ"/>
+      <property name="src.data.dir" location="/data/v2/Cicer/arietinum/synteny/ICC4958.gnm2.ann1.syn.PdvJ"/>
     </source>
 
-    <!-- ICC4958.gnm2.ann1.expr.4Y7B/ -->
+    <!-- expression/ICC4958.gnm2.ann1.expr.4Y7B -->
+    <!-- ├── cicar-ICC4958.gnm2.ann1.expr.4Y7B.metadata.xlsx -->
     <!-- ├── cicar.ICC4958.gnm2.ann1.expr.4Y7B.samples.tsv -->
-    <!-- ├── cicar.ICC4958.gnm2.ann1.expr.4Y7B.source.txt -->
-    <!-- ├── cicar.ICC4958.gnm2.ann1.expr.4Y7B.values.tsv -->
-    <source name="cicar.ICC4958.gnm2.ann1-expression" type="lis-expression" dump="true">
-      <property name="dataSetUrl" value="https://legumeinfo.org/data/public/Cicer_arietinum/ICC4958.gnm2.ann1.expr.4Y7B/"/>
-      <property name="dataSetDescription" value="Cicer arietinum ICC4958 transcription during flower development from Singh, et al. (2013)."/>
-      <property name="src.data.dir" location="/data/LIS/Cicer_arietinum/ICC4958.gnm2.ann1.expr.4Y7B"/>
+    <!-- ├── cicar.ICC4958.gnm2.ann1.expr.4Y7B.source.tsv -->
+    <!-- └── cicar.ICC4958.gnm2.ann1.expr.4Y7B.values.tsv -->
+    <source name="ICC4958.gnm2.ann1.expr.4Y7B" type="lis-expression" dump="true">
+      <property name="dataSetTitle" value="ICC4958.gnm2.ann1.expr.4Y7B"/>
+      <property name="dataSetUrl" value="https://legumeinfo.org/data/v2/Cicer/arietinum/expression/ICC4958.gnm2.ann1.expr.4Y7B/"/>
+      <property name="dataSetDescription" value="Cicer arietinum ICC4958 expression during flower development from Singh, et al. (2013)."/>
+      <property name="src.data.dir" location="/data/v2/Cicer/arietinum/expression/ICC4958.gnm2.ann1.expr.4Y7B"/>
     </source>
 
+
+    <!-- genetic/mixed.gwas.Li_Ruperao_2018 -->
+    <!-- ├── cicar.mixed.gwas.Li_Ruperao_2018.obo.tsv -->
+    <!-- ├── cicar.mixed.gwas.Li_Ruperao_2018.result.tsv -->
+    <!-- └── README.mixed.gwas.Li_Ruperao_2018.yml -->
+    <source name="mixed.gwas.Li_Ruperao_2018" type="lis-gwas" dump="true">
+      <property name="dataSetName" value="mixed.gwas.Li_Ruperao_2018"/>
+      <property name="dataSetUrl" value="https://legumeinfo.org/data/v2/Cicer/arietinum/genetic/mixed.gwas.Li_Ruperao_2018/"/>
+      <property name="dataSetDescription" value="Cicer arietinum GWAS for drought-tolerant yield traits from Li, et al. 2018"/>
+      <property name="src.data.dir" location="/data/v2/Cicer/arietinum/genetic/mixed.gwas.Li_Ruperao_2018"/>
+    </source>
+
+    <!-- genetic/mixed.gwas.Varshney_Thudi_2019 -->
+    <!-- ├── cicar.mixed.gwas.Varshney_Thudi_2019.obo.tsv -->
+    <!-- ├── cicar.mixed.gwas.Varshney_Thudi_2019.result.tsv -->
+    <!-- └── README.mixed.gwas.Varshney_Thudi_2019.yml -->
+    <source name="mixed.gwas.Varshney_Thudi_2019" type="lis-gwas" dump="true">
+      <property name="dataSetName" value="mixed.gwas.Varshney_Thudi_2019"/>
+      <property name="dataSetUrl" value="https://legumeinfo.org/data/v2/Cicer/arietinum/genetic/mixed.gwas.Varshney_Thudi_2019/"/>
+      <property name="dataSetDescription" value="Genome-wide association studies identified 262 markers and several candidate genes for 13 traits from Varshney, et al. 2019"/>
+      <property name="src.data.dir" location="/data/v2/Cicer/arietinum/genetic/mixed.gwas.Varshney_Thudi_2019"/>
+    </source>
+
+    <!-- ############# -->
+    <!-- GENE FAMILIES -->
+    <!-- ############# -->
+
+    <!-- LEGUMES/Fabaceae/genefamilies/legume.genefam.fam1.M65K/ -->
+    <source name="legume.genefam.fam1.M65K" type="lis-genefamily" dump="true">
+      <property name="dataSetUrl" value="https://legumeinfo.org/data/v2/LEGUMES/Fabaceae/genefamilies/legume.genefam.fam1.M65K/"/>
+      <property name="dataSetDescription" value="LIS gene families"/>
+      <property name="desired.organisms" value="aradu araip arahy arath cajca cicar cucsa glyma glyso lotja lupan medtr phalu phavu prupe solly tripr vigan vigra vigun vitvi"/>
+      <property name="src.data.dir" location="/data/v2/LEGUMES/Fabaceae/genefamilies/legume.genefam.fam1.M65K"/>
+    </source>
+
+    <!-- LEGUMES/Fabaceae/genefamilies/legume.genefam.fam1.M65K/legume.genefam.fam1.M65K.trees_ML_rooted/ -->
+    <source name="legume.genefam.fam1.M65K.trees_ML_rooted" type="lis-phylotree" dump="true">
+      <property name="dataSetUrl" value="https://legumeinfo.org/data/v2/LEGUMES/Fabaceae/genefamilies/legume.genefam.fam1.M65K/legume.genefam.fam1.M65K.trees_ML_rooted/"/>
+      <property name="dataSetDescription" value="LIS gene family phylogenetic trees"/>
+      <property name="src.data.dir" location="/data/v2/LEGUMES/Fabaceae/genefamilies/legume.genefam.fam1.M65K/legume.genefam.fam1.M65K.trees_ML_rooted"/>
+    </source>
+    
     <!-- ############### -->
     <!-- ONTOLOGIES ETC. -->
     <!-- ############### -->
