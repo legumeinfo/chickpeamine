@@ -2,6 +2,3 @@
 *.log
 .gradle
 build
-webapp/src/main/java/
-webapp/src/main/webapp/
-libs
